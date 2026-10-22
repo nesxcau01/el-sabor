@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>El Sabor Sagrado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <header class="navbar" id="navbar">
+    <a href="#inicio" class="logo" aria-label="El Sabor Sagrado">
+      <span class="logo-title">EL SABOR</span>
+      <span class="logo-sub">SAGRADO</span>
+    </a>
+
+    <nav class="nav-links" id="navLinks" aria-label="Menu principal">
+      <a href="#inicio" class="active">Início</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+    </nav>
+
+    <div class="actions">
+      <button class="icon-btn" id="themeBtn" aria-label="Alternar tema">🌙</button>
+
+      <div class="search-wrap">
+        <input type="search" id="searchInput" class="search-input" placeholder="Buscar no cardápio..." aria-label="Buscar">
+        <button class="icon-btn" id="searchBtn" aria-label="Buscar">🔍</button>
+      </div>
+
+      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Carrinho">
+        🛒
+        <span class="badge" id="cartBadge">0</span>
+      </button>
+
+      <a href="#entrar" class="login-link">Entrar</a>
+      <a href="#pedir" class="btn-primary" id="orderBtn">Pedir agora</a>
+
+      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <script src="script.js"></script>
+</body>
+</html>
