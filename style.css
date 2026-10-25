@@ -448,7 +448,7 @@ body {
 
 /* ===== Por que El Sabor Sagrado ===== */
 .why {
-  padding: 90px 24px 70px;
+  padding: 90px 0 70px;
   text-align: center;
 }
 
@@ -463,4 +463,466 @@ body {
   font-size: clamp(30px, 4vw, 52px);
   line-height: 1.2;
   color: var(--text);
+}
+
+/* Cards */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  width: 100%;
+  margin: 64px 0 0;
+  padding: 0 60px;
+  text-align: left;
+}
+
+.card {
+  padding: 24px 22px 28px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+.card-icon {
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 20px;
+  font-size: 24px;
+  background: rgba(224, 90, 36, 0.16);
+  border-radius: 12px;
+}
+
+.card h3 {
+  margin-bottom: 10px;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.card p {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+@media (max-width: 1000px) {
+  .cards { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 560px) {
+  .cards { grid-template-columns: 1fr; padding: 0 20px; }
+}
+
+/* ===== Nossa História ===== */
+.story {
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: center;
+  gap: 80px;
+  padding: 90px 60px 110px;
+}
+
+.story-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1.4 / 1;
+  border-radius: 20px;
+  background: #e4e4e4;
+  /* Quando tiver a foto, troque a linha acima por:
+     background: url("imagens/mexico.jpg") center / cover no-repeat; */
+}
+
+.story-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 20px;
+  text-align: center;
+  font-size: 16px;
+  font-weight: 600;
+  color: #333;
+}
+
+.story-badge {
+  position: absolute;
+  right: -22px;
+  bottom: 14%;
+  width: 130px;
+  height: 130px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  text-align: center;
+  color: #fff;
+  background: var(--accent);
+  border: 4px solid var(--bg);
+  border-radius: 50%;
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+}
+
+.story-badge strong {
+  font-size: 30px;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.story-badge span {
+  margin-top: 4px;
+  font-size: 11px;
+  line-height: 1.25;
+}
+
+.story-text .eyebrow {
+  margin-bottom: 20px;
+}
+
+.story-text h2 {
+  margin-bottom: 28px;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(32px, 3.8vw, 54px);
+  line-height: 1.25;
+  color: var(--text);
+}
+
+.story-text p {
+  max-width: 560px;
+  margin-bottom: 16px;
+  font-size: 17px;
+  line-height: 1.65;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.story-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  max-width: 560px;
+  margin-top: 44px;
+  list-style: none;
+  text-align: center;
+}
+
+.story-stats strong {
+  display: block;
+  font-size: 38px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.story-stats span {
+  display: block;
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  .story {
+    grid-template-columns: 1fr;
+    gap: 56px;
+    padding: 60px 24px 80px;
+  }
+
+  .story-badge { right: 10px; }
+}
+
+/* ===== Favoritos da casa (cardápio) ===== */
+.menu {
+  padding: 60px 60px 110px;
+}
+
+.menu-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+}
+
+.menu-header .eyebrow {
+  margin-bottom: 14px;
+  font-size: 13px;
+}
+
+.menu-header h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.btn-outline {
+  padding: 14px 40px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+  border: 1px solid var(--accent);
+  border-radius: 8px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.btn-outline:hover {
+  background: var(--accent);
+  color: #fff;
+}
+
+.menu-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 56px;
+}
+
+.dish {
+  overflow: hidden;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.dish:hover {
+  transform: translateY(-6px);
+  border-color: var(--accent);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+}
+
+/* Área da foto. Para usar uma foto, apague o <span class="dish-placeholder">
+   e coloque style="background-image: url('imagens/prato.jpg')" na div .dish-photo */
+.dish-photo {
+  position: relative;
+  height: 230px;
+  background: #181818 center / cover no-repeat;
+  border-bottom: 1px solid var(--border);
+}
+
+.dish-placeholder {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--muted);
+  opacity: 0.4;
+}
+
+.tag {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  padding: 5px 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 20px;
+}
+
+.dish-body {
+  padding: 20px 22px 22px;
+}
+
+.dish-body h3 {
+  margin-bottom: 10px;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--text);
+}
+
+.dish-body p {
+  min-height: 42px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+.dish-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 18px;
+}
+
+.price {
+  font-size: 19px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.dish-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.btn-details {
+  padding: 9px 16px;
+  font: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  color: #d9a07e;
+  background: rgba(224, 90, 36, 0.18);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.btn-details:hover {
+  background: rgba(224, 90, 36, 0.32);
+}
+
+.btn-add {
+  width: 40px;
+  height: 40px;
+  font: inherit;
+  font-size: 22px;
+  line-height: 1;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-add:hover {
+  background: var(--accent-hover);
+  transform: scale(1.08);
+}
+
+@media (max-width: 1000px) {
+  .menu-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 700px) {
+  .menu { padding: 40px 20px 80px; }
+
+  .menu-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== Nível de pimenta ===== */
+.spice {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 80px;
+  padding: 90px 60px;
+  background: #1a1210;
+}
+
+body.light .spice { background: #f3e6df; }
+
+.spice-text .eyebrow {
+  margin-bottom: 18px;
+  font-size: 13px;
+}
+
+.spice-text h2 {
+  max-width: 520px;
+  font-size: clamp(30px, 3.4vw, 46px);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.spice-text p {
+  max-width: 480px;
+  margin: 28px 0 44px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.spice-list {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.spice-card {
+  padding: 22px 26px 24px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  transition: transform 0.25s, border-color 0.25s;
+}
+
+.spice-card:hover {
+  transform: translateX(-6px);
+  border-color: var(--accent);
+}
+
+.spice-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.spice-top h3 {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.spice-top h3 span { font-size: 22px; }
+
+.spice-top small {
+  font-size: 15px;
+  color: var(--muted);
+  opacity: 0.75;
+}
+
+.spice-bars {
+  display: flex;
+  gap: 10px;
+  margin-top: 18px;
+}
+
+.spice-bars i {
+  width: 56px;
+  height: 5px;
+  background: var(--accent);
+  border-radius: 5px;
+}
+
+@media (max-width: 900px) {
+  .spice {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 60px 24px;
+  }
+
+  .spice-bars i { width: 44px; }
 }
