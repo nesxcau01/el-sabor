@@ -1,3 +1,4 @@
+/* ===== Tema escuro (padrão) ===== */
 :root {
   --bg: #111111;
   --bg-soft: #1f1f1f;
@@ -6,14 +7,44 @@
   --accent: #e05a24;
   --accent-hover: #f06a33;
   --border: rgba(255, 255, 255, 0.08);
+
+  --eyebrow: #f0a060;
+  --shadow: rgba(0, 0, 0, 0.35);
+  --shadow-strong: rgba(0, 0, 0, 0.45);
+  --photo-bg: #181818;
+  --placeholder: #e4e4e4;
+  --ph-1: #e4e4e4;
+  --ph-2: #b8b8b8;
+  --ph-3: #8c8c8c;
+  --details-text: #d9a07e;
+  --spice-bg: #1a1210;
+  --footer-bg: #161616;
+  --input-border: rgba(255, 255, 255, 0.14);
 }
 
-body.light {
-  --bg: #fafafa;
-  --bg-soft: #ececec;
+/* ===== Tema claro (classe "light" no body, ligada pelo botão da lua/sol) ===== */
+body.light,
+body:has(#themeToggle:checked) {
+  --bg: #f7f5f2;
+  --bg-soft: #ffffff;
   --text: #1a1a1a;
-  --muted: #555555;
+  --muted: #5a5a5a;
+  --accent: #d94f1a;
+  --accent-hover: #c84313;
   --border: rgba(0, 0, 0, 0.1);
+
+  --eyebrow: #d94f1a;
+  --shadow: rgba(0, 0, 0, 0.12);
+  --shadow-strong: rgba(0, 0, 0, 0.22);
+  --photo-bg: #e4e0db;
+  --placeholder: #dcd8d3;
+  --ph-1: #cfcac4;
+  --ph-2: #b3aea8;
+  --ph-3: #969089;
+  --details-text: #b8431a;
+  --spice-bg: #f3e6df;
+  --footer-bg: #ece8e3;
+  --input-border: rgba(0, 0, 0, 0.2);
 }
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -24,6 +55,13 @@ body {
   color: var(--text);
   min-height: 200vh;
   transition: background 0.3s, color 0.3s;
+}
+
+/* Troca de tema suave */
+.navbar, .nav-links, .icon-btn, .card, .dish, .review, .spice, .spice-card,
+.booking-form, .booking-form input, .footer, .float-icon, .story-image, .dish-photo {
+  transition-property: background-color, border-color, color, box-shadow, transform, height;
+  transition-duration: 0.3s;
 }
 
 /* ===== Navbar ===== */
@@ -44,7 +82,7 @@ body {
 
 .navbar.scrolled {
   height: 72px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 4px 20px var(--shadow);
 }
 
 /* Logo */
@@ -134,15 +172,37 @@ body {
   transform: translateY(-2px);
 }
 
+/* Interruptor do tema (checkbox escondido + label) */
+.theme-checkbox {
+  position: absolute;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  pointer-events: none;
+}
+
+#themeBtn { user-select: none; }
+
+.theme-icon::before { content: "🌙"; }
+
+body.light .theme-icon::before,
+body:has(#themeToggle:checked) .theme-icon::before { content: "☀️"; }
+
+#themeBtn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
 .badge {
   position: absolute;
-  top: -5px;
-  right: -5px;
-  min-width: 10px;
-  height: 10px;
-  padding: 0 3px;
-  font-size: 8px;
-  line-height: 10px;
+  top: -6px;
+  right: -6px;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 4px;
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 17px;
   text-align: center;
   color: #fff;
   background: var(--accent);
@@ -290,7 +350,7 @@ body {
   font-size: 14px;
   font-weight: 600;
   letter-spacing: 1.2px;
-  color: #f0a060;
+  color: var(--eyebrow);
 }
 
 .hero h1 {
@@ -390,27 +450,36 @@ body {
   font-size: 14px;
   font-weight: 600;
   color: #333;
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 18px 40px var(--shadow-strong);
+  transition: transform 0.5s ease, opacity 0.5s ease;
   background-size: cover;
   background-position: center;
 }
 
 .photo-1 {
-  background-color: #e4e4e4;
+  background-color: var(--ph-1);
   transform: rotate(-9deg) translate(-10px, 14px);
   z-index: 3;
 }
 
 .photo-2 {
-  background-color: #b8b8b8;
+  background-color: var(--ph-2);
   transform: rotate(-4deg) translate(40px, -6px);
   z-index: 2;
 }
 
 .photo-3 {
-  background-color: #8c8c8c;
+  background-color: var(--ph-3);
   transform: rotate(2deg) translate(90px, -26px);
   z-index: 1;
+}
+
+/* Clicar na foto da frente passa para a próxima (ver script.js) */
+.stack { cursor: pointer; }
+
+.photo.leaving {
+  transform: translate(-130%, 10%) rotate(-30deg);
+  opacity: 0;
 }
 
 /* Ícones flutuantes */
@@ -487,7 +556,7 @@ body {
 .card:hover {
   transform: translateY(-6px);
   border-color: var(--accent);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 14px 30px var(--shadow);
 }
 
 .card-icon {
@@ -537,7 +606,7 @@ body {
   width: 100%;
   aspect-ratio: 1.4 / 1;
   border-radius: 20px;
-  background: #e4e4e4;
+  background: var(--placeholder);
   /* Quando tiver a foto, troque a linha acima por:
      background: url("imagens/mexico.jpg") center / cover no-repeat; */
 }
@@ -570,7 +639,7 @@ body {
   background: var(--accent);
   border: 4px solid var(--bg);
   border-radius: 50%;
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 10px 28px var(--shadow-strong);
 }
 
 .story-badge strong {
@@ -701,7 +770,7 @@ body {
 .dish:hover {
   transform: translateY(-6px);
   border-color: var(--accent);
-  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 14px 30px var(--shadow);
 }
 
 /* Área da foto. Para usar uma foto, apague o <span class="dish-placeholder">
@@ -709,7 +778,7 @@ body {
 .dish-photo {
   position: relative;
   height: 230px;
-  background: #181818 center / cover no-repeat;
+  background: var(--photo-bg) center / cover no-repeat;
   border-bottom: 1px solid var(--border);
 }
 
@@ -782,7 +851,7 @@ body {
   font: inherit;
   font-size: 12px;
   font-weight: 600;
-  color: #d9a07e;
+  color: var(--details-text);
   background: rgba(224, 90, 36, 0.18);
   border: none;
   border-radius: 8px;
@@ -835,10 +904,8 @@ body {
   align-items: center;
   gap: 80px;
   padding: 90px 60px;
-  background: #1a1210;
+  background: var(--spice-bg);
 }
-
-body.light .spice { background: #f3e6df; }
 
 .spice-text .eyebrow {
   margin-bottom: 18px;
@@ -924,5 +991,259 @@ body.light .spice { background: #f3e6df; }
     padding: 60px 24px;
   }
 
+  .spice-bars i { width: 44px; }
+}
+
+/* ===== Avaliações ===== */
+.reviews {
+  padding: 100px 60px 120px;
+}
+
+.reviews h2 {
+  text-align: center;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(32px, 3.8vw, 52px);
+  line-height: 1.2;
+  color: var(--text);
+}
+
+.reviews-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-top: 64px;
+}
+
+.review {
+  display: flex;
+  flex-direction: column;
+  padding: 26px 28px 28px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+}
+
+.stars {
+  font-size: 20px;
+  letter-spacing: 3px;
+  color: #f5c542;
+}
+
+.review p {
+  flex: 1;
+  margin: 26px 0 30px;
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.review-author {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  display: grid;
+  place-items: center;
+  font-size: 16px;
+  font-weight: 700;
+  color: #fff;
+  background: var(--accent);
+  border-radius: 50%;
+}
+
+.review-author strong {
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+@media (max-width: 1000px) {
+  .reviews-grid { grid-template-columns: 1fr; max-width: 640px; margin-inline: auto; }
+}
+
+@media (max-width: 700px) {
+  .reviews { padding: 60px 20px 80px; }
+}
+
+/* ===== Reserva ===== */
+.booking {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  align-items: center;
+  gap: 80px;
+  padding: 90px 60px 130px;
+}
+
+.booking-text h2 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: clamp(38px, 4.6vw, 66px);
+  line-height: 1.15;
+  color: var(--text);
+}
+
+.booking-text p {
+  max-width: 440px;
+  margin-top: 28px;
+  font-size: 17px;
+  line-height: 1.6;
+  color: var(--muted);
+  opacity: 0.85;
+}
+
+.booking-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px 40px 44px;
+  background: var(--bg-soft);
+  border: 1px solid var(--border);
+  border-radius: 20px;
+}
+
+.booking-form h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--text);
+}
+
+.form-sub {
+  margin: -6px 0 10px;
+  font-size: 15px;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.booking-form input {
+  width: 100%;
+  padding: 16px 18px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--input-border);
+  border-radius: 10px;
+  outline: none;
+  color-scheme: dark;
+  transition: border-color 0.2s;
+}
+
+body.light .booking-form input,
+body:has(#themeToggle:checked) .booking-form input {
+  color-scheme: light;
+}
+
+.booking-form input::placeholder {
+  color: var(--muted);
+  opacity: 0.7;
+}
+
+.booking-form input:focus {
+  border-color: var(--accent);
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.btn-submit {
+  margin-top: 14px;
+  padding: 17px;
+  font: inherit;
+  font-size: 16px;
+  font-weight: 600;
+  color: #fff;
+  background: var(--accent);
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+}
+
+.btn-submit:hover {
+  background: var(--accent-hover);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 900px) {
+  .booking {
+    grid-template-columns: 1fr;
+    gap: 48px;
+    padding: 60px 20px 90px;
+  }
+
+  .booking-form { padding: 28px 22px 32px; }
+}
+
+/* ===== Rodapé ===== */
+.footer {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr 1fr;
+  gap: 40px;
+  padding: 70px 60px 80px;
+  background: var(--footer-bg);
+  border-top: 1px solid var(--border);
+}
+
+.footer-brand {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.footer-brand p {
+  margin-top: 14px;
+  font-size: 15px;
+  color: var(--muted);
+  opacity: 0.8;
+}
+
+.footer-col {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-col h4 {
+  margin-bottom: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  color: var(--text);
+}
+
+.footer-col a,
+.footer-col span {
+  font-size: 15px;
+  color: var(--muted);
+  text-decoration: none;
+  opacity: 0.85;
+}
+
+.footer-col a { transition: color 0.2s, opacity 0.2s; }
+
+.footer-col a:hover,
+.footer-col a.active {
+  color: var(--accent);
+  opacity: 1;
+}
+
+@media (max-width: 900px) {
+  .footer {
+    grid-template-columns: 1fr 1fr;
+    padding: 50px 24px 60px;
+  }
+
+  .footer-brand { grid-column: 1 / -1; }
+}
   .spice-bars i { width: 44px; }
 }
