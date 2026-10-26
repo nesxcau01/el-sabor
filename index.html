@@ -6,9 +6,16 @@
   <title>El Sabor Sagrado</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
+  <script>
+    /* Aplica o tema salvo antes da página aparecer (evita o "piscar" de escuro para claro) */
+    try { if (localStorage.getItem("theme") === "light") document.body.classList.add("light"); } catch (e) {}
+  </script>
+
+  <!-- Interruptor do tema: funciona só com CSS (sem JavaScript) -->
+  <input type="checkbox" id="themeToggle" class="theme-checkbox" aria-hidden="true" tabindex="-1">
 
   <header class="navbar" id="navbar">
     <a href="#inicio" class="logo" aria-label="El Sabor Sagrado">
@@ -25,7 +32,7 @@
     </nav>
 
     <div class="actions">
-      <button class="icon-btn" id="themeBtn" aria-label="Alternar tema">🌙</button>
+      <label class="icon-btn" id="themeBtn" for="themeToggle" role="button" tabindex="0" aria-label="Alternar modo claro e escuro" title="Alternar modo claro/escuro"><span class="theme-icon"></span></label>
 
       <div class="search-wrap">
         <input type="search" id="searchInput" class="search-input" placeholder="Buscar no cardápio..." aria-label="Buscar">
@@ -321,7 +328,101 @@
         </article>
       </div>
     </section>
+
+    <section class="reviews" id="depoimentos">
+      <h2>Avaliações da casa</h2>
+
+      <div class="reviews-grid">
+        <article class="review">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p>"Os tacos são simplesmente incríveis! A salsa de habanero é para quem realmente gosta de emoção."</p>
+          <div class="review-author">
+            <span class="avatar">M</span>
+            <strong>Mariana Guedes</strong>
+          </div>
+        </article>
+
+        <article class="review">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p>"Ambiente maravilhoso, comida deliciosa e atendimento impecável. Já virou nosso restaurante favorito."</p>
+          <div class="review-author">
+            <span class="avatar">R</span>
+            <strong>Rafael Lopes</strong>
+          </div>
+        </article>
+
+        <article class="review">
+          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+          <p>"O burrito é enorme e muito saboroso. A entrega também foi super rápida. Recomendo demais!"</p>
+          <div class="review-author">
+            <span class="avatar">A</span>
+            <strong>Ana Maria</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="booking" id="contato">
+      <div class="booking-text">
+        <h2>Venha fazer a sua reserva!</h2>
+        <p>
+          Estamos esperando você para uma experiência cheia de sabor, música e
+          muita comida boa.
+        </p>
+      </div>
+
+      <form class="booking-form" action="#contato">
+        <h3>Reserve sua mesa</h3>
+        <p class="form-sub">Preencha os dados :</p>
+
+        <input type="text" name="nome" placeholder="Seu Nome" aria-label="Seu nome" required>
+        <input type="tel" name="telefone" placeholder="Telefone" aria-label="Telefone" required>
+
+        <div class="form-row">
+          <input type="date" name="data" aria-label="Data da reserva" required>
+          <input type="time" name="hora" aria-label="Horário da reserva" required>
+        </div>
+
+        <input type="number" name="pessoas" min="1" max="30" placeholder="Número de pessoas" aria-label="Número de pessoas" required>
+
+        <button type="submit" class="btn-submit">Reservar sua mesa</button>
+      </form>
+    </section>
   </main>
 
+  <footer class="footer" id="rodape">
+    <div class="footer-brand">
+      <span class="logo-title">EL SABOR</span>
+      <span class="logo-sub">SAGRADO</span>
+      <p>A autêntica experiência Mex-Tex na sua mesa.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>NAVEGAÇÃO</h4>
+      <a href="#inicio" class="active">Início</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="#cardapio">Cardápio</a>
+      <a href="#depoimentos">Depoimentos</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>MINHA CONTA</h4>
+      <a href="#entrar">Login</a>
+      <a href="#criar-conta">Criar conta</a>
+      <a href="#pedidos">Meus pedidos</a>
+      <a href="#perfil">Meu perfil</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>CONTATO</h4>
+      <span>Av. México, 123</span>
+      <span>+55 (00) 99999-9999</span>
+      <span>Ter - Dom: 11h às 23h</span>
+    </div>
+  </footer>
+
+  <script src="script.js?v=3"></script>
+</body>
+</html>
 </body>
 </html>
