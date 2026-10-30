@@ -53,10 +53,118 @@
         <p>Escolha seus favoritos e monte seu pedido.</p>
       </div>
 
+      <label class="busca-cardapio">
+        <span>🔍</span>
+        <input type="search" placeholder="Buscar tacos, burritos, bebidas..." aria-label="Buscar no cardápio">
+      </label>
+
+      <div class="filtros">
+        <button class="filtro ativo" data-categoria="todos">Todos</button>
+        <button class="filtro" data-categoria="tacos">Tacos</button>
+        <button class="filtro" data-categoria="burritos">Burritos</button>
+        <button class="filtro" data-categoria="quesadillas">Quesadillas</button>
+        <button class="filtro" data-categoria="bebidas">Bebidas</button>
+        <button class="filtro" data-categoria="sobremesas">Sobremesas</button>
+      </div>
+
       <div class="cardapio-grade">
-        <article class="prato">
+        <article class="prato" data-categoria="tacos">
+          <div class="prato-foto" style="background-image: url('imagens/tacos.jpg')">
+            <span class="etiqueta">MAIS PEDIDO</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Tacos</h3>
+            <p>Três tacos de milho com carne temperada, pico de gallo e limão.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 32,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Tacos">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato" data-categoria="burritos">
+          <div class="prato-foto" style="background-image: url('imagens/burrito-azteca.jpg')">
+          </div>
+          <div class="prato-corpo">
+            <h3>Burrito Azteca</h3>
+            <p>Burrito grande com carne, feijão, arroz e molho picante da casa.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 39,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Burrito Azteca">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato" data-categoria="entradas">
+          <div class="prato-foto" style="background-image: url('imagens/guacamole-sagrado.jpg')">
+          </div>
+          <div class="prato-corpo">
+            <h3>Guacamole Sagrado</h3>
+            <p>Guacamole fresco preparado na hora, servido com tortilla chips.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 24,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Guacamole Sagrado">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato" data-categoria="quesadillas">
           <div class="prato-foto">
             <span class="etiqueta">MAIS PEDIDO</span>
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Quesadilla Mexicana</h3>
+            <p>Tortilha grelhada com queijo derretido, pimentão e frango desfiado.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 29,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Quesadilla Mexicana">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato" data-categoria="entradas">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Nachos Fiesta</h3>
+            <p>Nachos crocantes com queijo, feijão, jalapeño e creme azedo.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 34,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Nachos Fiesta">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato" data-categoria="bebidas">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Margarita Clássica</h3>
+            <p>Drink de tequila, limão fresco e sal na borda do copo.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 19,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Margarita Clássica">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato" data-categoria="tacos">
+          <div class="prato-foto">
             <span class="prato-espaco-foto">Foto do prato</span>
           </div>
           <div class="prato-corpo">
@@ -71,7 +179,7 @@
             </div>
           </div>
         </article>
-        <article class="prato">
+        <article class="prato" data-categoria="sobremesas">
           <div class="prato-foto">
             <span class="prato-espaco-foto">Foto do prato</span>
           </div>
@@ -87,7 +195,7 @@
             </div>
           </div>
         </article>
-        <article class="prato">
+        <article class="prato" data-categoria="burritos">
           <div class="prato-foto">
             <span class="prato-espaco-foto">Foto do prato</span>
           </div>
@@ -103,9 +211,8 @@
             </div>
           </div>
         </article>
-        <article class="prato">
+        <article class="prato" data-categoria="bebidas">
           <div class="prato-foto">
-            <span class="etiqueta">MAIS PEDIDO</span>
             <span class="prato-espaco-foto">Foto do prato</span>
           </div>
           <div class="prato-corpo">
@@ -120,7 +227,7 @@
             </div>
           </div>
         </article>
-        <article class="prato">
+        <article class="prato" data-categoria="tacos">
           <div class="prato-foto">
             <span class="prato-espaco-foto">Foto do prato</span>
           </div>
@@ -136,7 +243,7 @@
             </div>
           </div>
         </article>
-        <article class="prato">
+        <article class="prato" data-categoria="sobremesas">
           <div class="prato-foto">
             <span class="prato-espaco-foto">Foto do prato</span>
           </div>
@@ -153,6 +260,8 @@
           </div>
         </article>
       </div>
+
+      <p class="sem-resultado" hidden>Nenhum prato encontrado.</p>
     </section>
   </main>
 

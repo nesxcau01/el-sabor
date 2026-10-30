@@ -1217,3 +1217,78 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
   color: var(--cinza);
   opacity: 0.85;
 }
+
+.busca-cardapio {
+  position: relative;
+  display: block;
+  max-width: 480px;
+  margin: 44px auto 0;
+}
+
+.busca-cardapio span {
+  position: absolute;
+  top: 50%;
+  left: 18px;
+  transform: translateY(-50%);
+  font-size: 14px;
+}
+
+.busca-cardapio input {
+  width: 100%;
+  padding: 16px 18px 16px 48px;
+  font: inherit;
+  font-size: 15px;
+  color: var(--texto);
+  background: var(--fundo-suave);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.busca-cardapio input::placeholder {
+  color: var(--cinza);
+  opacity: 0.7;
+}
+
+.busca-cardapio input:focus {
+  border-color: var(--laranja);
+}
+
+.filtros {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 14px;
+  margin-top: 30px;
+}
+
+.filtro {
+  padding: 11px 24px;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--texto);
+  background: var(--fundo-suave);
+  border: 1px solid var(--borda);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.filtro:hover {
+  border-color: var(--laranja);
+}
+
+.filtro.ativo {
+  color: #fff;
+  background: var(--laranja);
+  border-color: var(--laranja);
+}
+
+.sem-resultado {
+  margin-top: 40px;
+  text-align: center;
+  font-size: 17px;
+  color: var(--cinza);
+}
