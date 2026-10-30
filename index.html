@@ -6,57 +6,48 @@
   <title>El Sabor Sagrado</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css?v=3">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <script>
-    /* Aplica o tema salvo antes da página aparecer (evita o "piscar" de escuro para claro) */
-    try { if (localStorage.getItem("theme") === "light") document.body.classList.add("light"); } catch (e) {}
-  </script>
+  <input type="checkbox" id="interruptor-tema" class="tema-checkbox">
 
-  <!-- Interruptor do tema: funciona só com CSS (sem JavaScript) -->
-  <input type="checkbox" id="themeToggle" class="theme-checkbox" aria-hidden="true" tabindex="-1">
-
-  <header class="navbar" id="navbar">
-    <a href="#inicio" class="logo" aria-label="El Sabor Sagrado">
-      <span class="logo-title">EL SABOR</span>
-      <span class="logo-sub">SAGRADO</span>
+  <header class="barra-topo">
+    <a href="#inicio" class="logo">
+      <span class="logo-titulo">EL SABOR</span>
+      <span class="logo-subtitulo">SAGRADO</span>
     </a>
 
-    <nav class="nav-links" id="navLinks" aria-label="Menu principal">
-      <a href="#inicio" class="active">Início</a>
+    <nav class="menu-links">
+      <a href="#inicio" class="ativo">Início</a>
       <a href="#sobre">Sobre Nós</a>
-      <a href="#cardapio">Cardápio</a>
+      <a href="cardapio.html">Cardápio</a>
       <a href="#depoimentos">Depoimentos</a>
       <a href="#contato">Contato</a>
     </nav>
 
-    <div class="actions">
-      <label class="icon-btn" id="themeBtn" for="themeToggle" role="button" tabindex="0" aria-label="Alternar modo claro e escuro" title="Alternar modo claro/escuro"><span class="theme-icon"></span></label>
+    <div class="acoes">
+      <label class="botao-icone botao-tema" for="interruptor-tema" aria-label="Modo claro ou escuro"><span class="tema-icone"></span></label>
 
-      <div class="search-wrap">
-        <input type="search" id="searchInput" class="search-input" placeholder="Buscar no cardápio..." aria-label="Buscar">
-        <button class="icon-btn" id="searchBtn" aria-label="Buscar">🔍</button>
-      </div>
+      <a href="cardapio.html" class="botao-icone" aria-label="Cardápio">🔍</a>
 
-      <button class="icon-btn cart-btn" id="cartBtn" aria-label="Carrinho">
+      <button class="botao-icone botao-carrinho" aria-label="Carrinho">
         🛒
-        <span class="badge" id="cartBadge">0</span>
+        <span class="contador">0</span>
       </button>
 
-      <a href="#entrar" class="login-link">Entrar</a>
-      <a href="#pedir" class="btn-primary" id="orderBtn">Pedir agora</a>
+      <a href="#entrar" class="link-entrar">Entrar</a>
+      <a href="#pedir" class="botao-principal">Pedir agora</a>
 
-      <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu" aria-expanded="false">
+      <button class="botao-menu" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
   </header>
 
   <main>
-    <section class="hero" id="inicio">
-      <div class="hero-text">
-        <span class="eyebrow">SABOR · TRADIÇÃO · PAIXÃO</span>
+    <section class="destaque" id="inicio">
+      <div class="destaque-texto">
+        <span class="sobretitulo">SABOR · TRADIÇÃO · PAIXÃO</span>
 
         <h1>
           A Autêntica<br>
@@ -64,20 +55,20 @@
           Mex-Tex na Sua Mesa
         </h1>
 
-        <p class="hero-desc">
+        <p class="destaque-descricao">
           Ingredientes frescos, receitas artesanais e todo o sabor do México
           preparado especialmente para você.
         </p>
 
-        <div class="hero-buttons">
-          <a href="#cardapio" class="btn-primary btn-small">Ver Cardápio</a>
-          <a href="#whatsapp" class="btn-whatsapp btn-small">Pedir pelo WhatsApp</a>
+        <div class="destaque-botoes">
+          <a href="cardapio.html" class="botao-principal botao-pequeno">Ver Cardápio</a>
+          <a href="#whatsapp" class="botao-whatsapp botao-pequeno">Pedir pelo WhatsApp</a>
         </div>
 
-        <ul class="stats">
+        <ul class="numeros">
           <li>
             <strong>4.9/5</strong>
-            <span><b class="star">★</b> Avaliação</span>
+            <span><b class="estrela">★</b> Avaliação</span>
           </li>
           <li>
             <strong>+2500</strong>
@@ -90,63 +81,62 @@
         </ul>
       </div>
 
-      <div class="hero-visual">
-        <div class="stack">
-          <div class="float-icon icon-avocado">🥑</div>
-          <div class="float-icon icon-taco">🌮</div>
-          <div class="float-icon icon-chili">🌶️</div>
+      <div class="destaque-visual">
+        <div class="pilha">
+          <div class="icone-flutuante icone-abacate">🥑</div>
+          <div class="icone-flutuante icone-taco">🌮</div>
+          <div class="icone-flutuante icone-pimenta">🌶️</div>
 
-          <div class="photo photo-3">Foto 3</div>
-          <div class="photo photo-2">Foto 2</div>
-          <div class="photo photo-1">Foto 1</div>
+          <div class="foto foto-3">Foto 3</div>
+          <div class="foto foto-2">Foto 2</div>
+          <div class="foto foto-1">Foto 1</div>
         </div>
       </div>
     </section>
 
-    <section class="why" id="sobre">
-      <span class="eyebrow">POR QUE EL SABOR SAGRADO?</span>
+    <section class="porque" id="sobre">
+      <span class="sobretitulo">POR QUE EL SABOR SAGRADO?</span>
       <h2>Feito com paixão, servido com sabor.</h2>
 
-      <div class="cards">
-        <article class="card">
-          <div class="card-icon">🥑</div>
+      <div class="cartoes">
+        <article class="cartao">
+          <div class="cartao-icone">🥑</div>
           <h3>Ingredientes Frescos</h3>
           <p>Ingredientes selecionados diariamente para garantir o melhor sabor.</p>
         </article>
 
-        <article class="card">
-          <div class="card-icon">🌶️</div>
+        <article class="cartao">
+          <div class="cartao-icone">🌶️</div>
           <h3>Salsas Artesanais</h3>
           <p>Nossas salsas são preparadas todos os dias na cozinha da casa.</p>
         </article>
 
-        <article class="card">
-          <div class="card-icon">🌱</div>
+        <article class="cartao">
+          <div class="cartao-icone">🌱</div>
           <h3>Opções Veganas</h3>
           <p>Deliciosas opções veganas e sem glúten para todos.</p>
         </article>
 
-        <article class="card">
-          <div class="card-icon">🚀</div>
+        <article class="cartao">
+          <div class="cartao-icone">🚀</div>
           <h3>Entrega Rápida</h3>
           <p>Seu pedido chega quente, fresco e cheio de sabor.</p>
         </article>
       </div>
     </section>
 
-    <section class="story" id="historia">
-      <div class="story-image">
-        <!-- Para colocar a foto: apague a linha abaixo e use background-image em .story-image no style.css -->
-        <span class="story-placeholder">Foto: adicione sua imagem aqui</span>
+    <section class="historia" id="historia">
+      <div class="historia-imagem">
+        <span class="historia-espaco-foto">Foto: adicione sua imagem aqui</span>
 
-        <div class="story-badge">
+        <div class="historia-selo">
           <strong>+10</strong>
           <span>Anos levando sabor às mesas.</span>
         </div>
       </div>
 
-      <div class="story-text">
-        <span class="eyebrow">NOSSA HISTÓRIA</span>
+      <div class="historia-texto">
+        <span class="sobretitulo">NOSSA HISTÓRIA</span>
         <h2>O México dentro de cada mordida.</h2>
 
         <p>
@@ -159,7 +149,7 @@
           um toque moderno desenvolvido pelo nosso chef.
         </p>
 
-        <ul class="story-stats">
+        <ul class="historia-numeros">
           <li><strong>10+</strong><span>Anos de experiência</span></li>
           <li><strong>30+</strong><span>Pratos no cardápio</span></li>
           <li><strong>4.9</strong><span>Nota média</span></li>
@@ -167,115 +157,115 @@
       </div>
     </section>
 
-    <section class="menu" id="cardapio">
-      <div class="menu-header">
+    <section class="cardapio" id="cardapio">
+      <div class="cardapio-topo">
         <div>
-          <span class="eyebrow">DO NOSSO CARDÁPIO</span>
+          <span class="sobretitulo">DO NOSSO CARDÁPIO</span>
           <h2>Favoritos da casa</h2>
         </div>
-        <a href="#cardapio-completo" class="btn-outline">Ver cardápio completo +</a>
+        <a href="cardapio.html" class="botao-contorno">Ver cardápio completo +</a>
       </div>
 
-      <div class="menu-grid">
-        <article class="dish">
-          <div class="dish-photo">
-            <span class="tag">MAIS PEDIDO</span>
-            <span class="dish-placeholder">Foto do prato</span>
+      <div class="cardapio-grade">
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="etiqueta">MAIS PEDIDO</span>
+            <span class="prato-espaco-foto">Foto do prato</span>
           </div>
-          <div class="dish-body">
+          <div class="prato-corpo">
             <h3>Taco Vegano</h3>
             <p>Tacos de jaca desfiada, guacamole, cebola roxa e salsa fresca.</p>
-            <div class="dish-footer">
-              <strong class="price">R$ 29,90</strong>
-              <div class="dish-actions">
-                <button class="btn-details">Detalhes</button>
-                <button class="btn-add" aria-label="Adicionar Taco Vegano">+</button>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 29,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Taco Vegano">+</button>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="dish">
-          <div class="dish-photo">
-            <span class="dish-placeholder">Foto do prato</span>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
           </div>
-          <div class="dish-body">
+          <div class="prato-corpo">
             <h3>Churros Mexicanos</h3>
             <p>Churros crocantes com açúcar, canela e doce de leite caseiro.</p>
-            <div class="dish-footer">
-              <strong class="price">R$ 18,90</strong>
-              <div class="dish-actions">
-                <button class="btn-details">Detalhes</button>
-                <button class="btn-add" aria-label="Adicionar Churros Mexicanos">+</button>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 18,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Churros Mexicanos">+</button>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="dish">
-          <div class="dish-photo">
-            <span class="dish-placeholder">Foto do prato</span>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
           </div>
-          <div class="dish-body">
+          <div class="prato-corpo">
             <h3>Burrito Vegano</h3>
             <p>Burrito de feijão preto, arroz, milho, legumes e guacamole.</p>
-            <div class="dish-footer">
-              <strong class="price">R$ 34,90</strong>
-              <div class="dish-actions">
-                <button class="btn-details">Detalhes</button>
-                <button class="btn-add" aria-label="Adicionar Burrito Vegano">+</button>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 34,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Burrito Vegano">+</button>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="dish">
-          <div class="dish-photo">
-            <span class="tag">MAIS PEDIDO</span>
-            <span class="dish-placeholder">Foto do prato</span>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="etiqueta">MAIS PEDIDO</span>
+            <span class="prato-espaco-foto">Foto do prato</span>
           </div>
-          <div class="dish-body">
+          <div class="prato-corpo">
             <h3>Paloma Mexicana</h3>
             <p>Drink refrescante de tequila, grapefruit e limão.</p>
-            <div class="dish-footer">
-              <strong class="price">R$ 21,90</strong>
-              <div class="dish-actions">
-                <button class="btn-details">Detalhes</button>
-                <button class="btn-add" aria-label="Adicionar Paloma Mexicana">+</button>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 21,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Paloma Mexicana">+</button>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="dish">
-          <div class="dish-photo">
-            <span class="dish-placeholder">Foto do prato</span>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
           </div>
-          <div class="dish-body">
+          <div class="prato-corpo">
             <h3>Taco Pastor</h3>
             <p>Tacos de carne marinada com abacaxi, coentro e cebola.</p>
-            <div class="dish-footer">
-              <strong class="price">R$ 34,90</strong>
-              <div class="dish-actions">
-                <button class="btn-details">Detalhes</button>
-                <button class="btn-add" aria-label="Adicionar Taco Pastor">+</button>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 34,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Taco Pastor">+</button>
               </div>
             </div>
           </div>
         </article>
 
-        <article class="dish">
-          <div class="dish-photo">
-            <span class="dish-placeholder">Foto do prato</span>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
           </div>
-          <div class="dish-body">
+          <div class="prato-corpo">
             <h3>Tres Leches</h3>
             <p>Bolo molhado em três leites, com chantilly e canela.</p>
-            <div class="dish-footer">
-              <strong class="price">R$ 17,90</strong>
-              <div class="dish-actions">
-                <button class="btn-details">Detalhes</button>
-                <button class="btn-add" aria-label="Adicionar Tres Leches">+</button>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 17,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Tres Leches">+</button>
               </div>
             </div>
           </div>
@@ -283,78 +273,78 @@
       </div>
     </section>
 
-    <section class="spice" id="pimenta">
-      <div class="spice-text">
-        <span class="eyebrow">Atenção</span>
+    <section class="pimenta" id="pimenta">
+      <div class="pimenta-texto">
+        <span class="sobretitulo">Atenção</span>
         <h2>Escolha o seu nível de pimenta!</h2>
         <p>
           Do suave ao "meu Deus, por que fiz isso?", temos uma salsa para cada
           aventureiro.
         </p>
-        <a href="#cardapio" class="btn-primary btn-small">Explorar Cardápio</a>
+        <a href="cardapio.html" class="botao-principal botao-pequeno">Explorar Cardápio</a>
       </div>
 
-      <div class="spice-list">
-        <article class="spice-card">
-          <div class="spice-top">
+      <div class="pimenta-lista">
+        <article class="pimenta-cartao">
+          <div class="pimenta-topo">
             <h3><span>🥑</span> Guacamole</h3>
             <small>Suave</small>
           </div>
-          <div class="spice-bars"><i></i></div>
+          <div class="pimenta-barras"><i></i></div>
         </article>
 
-        <article class="spice-card">
-          <div class="spice-top">
+        <article class="pimenta-cartao">
+          <div class="pimenta-topo">
             <h3><span>🍅</span> Pico de Gallo</h3>
             <small>Leve</small>
           </div>
-          <div class="spice-bars"><i></i><i></i></div>
+          <div class="pimenta-barras"><i></i><i></i></div>
         </article>
 
-        <article class="spice-card">
-          <div class="spice-top">
+        <article class="pimenta-cartao">
+          <div class="pimenta-topo">
             <h3><span>🌶️</span> Chipotle</h3>
             <small>Médio</small>
           </div>
-          <div class="spice-bars"><i></i><i></i><i></i></div>
+          <div class="pimenta-barras"><i></i><i></i><i></i></div>
         </article>
 
-        <article class="spice-card">
-          <div class="spice-top">
+        <article class="pimenta-cartao">
+          <div class="pimenta-topo">
             <h3><span>🔥</span> Habanero Sagrado</h3>
             <small>Extremo</small>
           </div>
-          <div class="spice-bars"><i></i><i></i><i></i><i></i><i></i></div>
+          <div class="pimenta-barras"><i></i><i></i><i></i><i></i><i></i></div>
         </article>
       </div>
     </section>
 
-    <section class="reviews" id="depoimentos">
+    <section class="avaliacoes" id="depoimentos">
       <h2>Avaliações da casa</h2>
 
-      <div class="reviews-grid">
-        <article class="review">
-          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+      <div class="avaliacoes-grade">
+        <article class="avaliacao">
+          <div class="estrelas">★★★★★</div>
           <p>"Os tacos são simplesmente incríveis! A salsa de habanero é para quem realmente gosta de emoção."</p>
-          <div class="review-author">
+          <div class="avaliacao-autor">
             <span class="avatar">M</span>
             <strong>Mariana Guedes</strong>
           </div>
         </article>
 
-        <article class="review">
-          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+        <article class="avaliacao">
+          <div class="estrelas">★★★★★</div>
           <p>"Ambiente maravilhoso, comida deliciosa e atendimento impecável. Já virou nosso restaurante favorito."</p>
-          <div class="review-author">
+          <div class="avaliacao-autor">
             <span class="avatar">R</span>
             <strong>Rafael Lopes</strong>
           </div>
         </article>
 
-        <article class="review">
-          <div class="stars" aria-label="5 estrelas">★★★★★</div>
+        <article class="avaliacao">
+          <div class="estrelas">★★★★★</div>
           <p>"O burrito é enorme e muito saboroso. A entrega também foi super rápida. Recomendo demais!"</p>
-          <div class="review-author">
+          <div class="avaliacao-autor">
             <span class="avatar">A</span>
             <strong>Ana Maria</strong>
           </div>
@@ -362,8 +352,8 @@
       </div>
     </section>
 
-    <section class="booking" id="contato">
-      <div class="booking-text">
+    <section class="reserva" id="contato">
+      <div class="reserva-texto">
         <h2>Venha fazer a sua reserva!</h2>
         <p>
           Estamos esperando você para uma experiência cheia de sabor, música e
@@ -371,41 +361,41 @@
         </p>
       </div>
 
-      <form class="booking-form" action="#contato">
+      <form class="reserva-formulario" action="#contato">
         <h3>Reserve sua mesa</h3>
-        <p class="form-sub">Preencha os dados :</p>
+        <p class="formulario-subtitulo">Preencha os dados :</p>
 
         <input type="text" name="nome" placeholder="Seu Nome" aria-label="Seu nome" required>
         <input type="tel" name="telefone" placeholder="Telefone" aria-label="Telefone" required>
 
-        <div class="form-row">
+        <div class="formulario-linha">
           <input type="date" name="data" aria-label="Data da reserva" required>
           <input type="time" name="hora" aria-label="Horário da reserva" required>
         </div>
 
         <input type="number" name="pessoas" min="1" max="30" placeholder="Número de pessoas" aria-label="Número de pessoas" required>
 
-        <button type="submit" class="btn-submit">Reservar sua mesa</button>
+        <button type="submit" class="botao-enviar">Reservar sua mesa</button>
       </form>
     </section>
   </main>
 
-  <footer class="footer" id="rodape">
-    <div class="footer-brand">
-      <span class="logo-title">EL SABOR</span>
-      <span class="logo-sub">SAGRADO</span>
+  <footer class="rodape" id="rodape">
+    <div class="rodape-marca">
+      <span class="logo-titulo">EL SABOR</span>
+      <span class="logo-subtitulo">SAGRADO</span>
       <p>A autêntica experiência Mex-Tex na sua mesa.</p>
     </div>
 
-    <div class="footer-col">
+    <div class="rodape-coluna">
       <h4>NAVEGAÇÃO</h4>
-      <a href="#inicio" class="active">Início</a>
+      <a href="#inicio" class="ativo">Início</a>
       <a href="#sobre">Sobre Nós</a>
-      <a href="#cardapio">Cardápio</a>
+      <a href="cardapio.html">Cardápio</a>
       <a href="#depoimentos">Depoimentos</a>
     </div>
 
-    <div class="footer-col">
+    <div class="rodape-coluna">
       <h4>MINHA CONTA</h4>
       <a href="#entrar">Login</a>
       <a href="#criar-conta">Criar conta</a>
@@ -413,7 +403,7 @@
       <a href="#perfil">Meu perfil</a>
     </div>
 
-    <div class="footer-col">
+    <div class="rodape-coluna">
       <h4>CONTATO</h4>
       <span>Av. México, 123</span>
       <span>+55 (00) 99999-9999</span>
@@ -421,8 +411,6 @@
     </div>
   </footer>
 
-  <script src="script.js?v=3"></script>
-</body>
-</html>
+  <script src="script.js"></script>
 </body>
 </html>

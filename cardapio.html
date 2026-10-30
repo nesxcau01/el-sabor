@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio | El Sabor Sagrado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <input type="checkbox" id="interruptor-tema" class="tema-checkbox">
+
+  <header class="barra-topo">
+    <a href="index.html" class="logo">
+      <span class="logo-titulo">EL SABOR</span>
+      <span class="logo-subtitulo">SAGRADO</span>
+    </a>
+
+    <nav class="menu-links">
+      <a href="index.html">Início</a>
+      <a href="index.html#sobre">Sobre Nós</a>
+      <a href="cardapio.html" class="ativo">Cardápio</a>
+      <a href="index.html#depoimentos">Depoimentos</a>
+      <a href="index.html#contato">Contato</a>
+    </nav>
+
+    <div class="acoes">
+      <label class="botao-icone botao-tema" for="interruptor-tema" aria-label="Modo claro ou escuro"><span class="tema-icone"></span></label>
+
+      <a href="cardapio.html" class="botao-icone" aria-label="Cardápio">🔍</a>
+
+      <button class="botao-icone botao-carrinho" aria-label="Carrinho">
+        🛒
+        <span class="contador">0</span>
+      </button>
+
+      <a href="#entrar" class="link-entrar">Entrar</a>
+      <a href="#pedir" class="botao-principal">Pedir agora</a>
+
+      <button class="botao-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="cardapio cardapio-pagina" id="cardapio">
+      <div class="cardapio-cabecalho">
+        <span class="sobretitulo">SABORES DO MÉXICO</span>
+        <h1>Nosso Cardápio</h1>
+        <p>Escolha seus favoritos e monte seu pedido.</p>
+      </div>
+
+      <div class="cardapio-grade">
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="etiqueta">MAIS PEDIDO</span>
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Taco Vegano</h3>
+            <p>Tacos de jaca desfiada, guacamole, cebola roxa e salsa fresca.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 29,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Taco Vegano">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Churros Mexicanos</h3>
+            <p>Churros crocantes com açúcar, canela e doce de leite caseiro.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 18,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Churros Mexicanos">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Burrito Vegano</h3>
+            <p>Burrito de feijão preto, arroz, milho, legumes e guacamole.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 34,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Burrito Vegano">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="etiqueta">MAIS PEDIDO</span>
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Paloma Mexicana</h3>
+            <p>Drink refrescante de tequila, grapefruit e limão.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 21,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Paloma Mexicana">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Taco Pastor</h3>
+            <p>Tacos de carne marinada com abacaxi, coentro e cebola.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 34,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Taco Pastor">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="prato">
+          <div class="prato-foto">
+            <span class="prato-espaco-foto">Foto do prato</span>
+          </div>
+          <div class="prato-corpo">
+            <h3>Tres Leches</h3>
+            <p>Bolo molhado em três leites, com chantilly e canela.</p>
+            <div class="prato-rodape">
+              <strong class="preco">R$ 17,90</strong>
+              <div class="prato-acoes">
+                <button class="botao-detalhes">Detalhes</button>
+                <button class="botao-adicionar" aria-label="Adicionar Tres Leches">+</button>
+              </div>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape" id="rodape">
+    <div class="rodape-marca">
+      <span class="logo-titulo">EL SABOR</span>
+      <span class="logo-subtitulo">SAGRADO</span>
+      <p>A autêntica experiência Mex-Tex na sua mesa.</p>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>NAVEGAÇÃO</h4>
+      <a href="index.html">Início</a>
+      <a href="index.html#sobre">Sobre Nós</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="index.html#depoimentos">Depoimentos</a>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>MINHA CONTA</h4>
+      <a href="#entrar">Login</a>
+      <a href="#criar-conta">Criar conta</a>
+      <a href="#pedidos">Meus pedidos</a>
+      <a href="#perfil">Meu perfil</a>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>CONTATO</h4>
+      <span>Av. México, 123</span>
+      <span>+55 (00) 99999-9999</span>
+      <span>Ter - Dom: 11h às 23h</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
