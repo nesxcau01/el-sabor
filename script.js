@@ -79,6 +79,16 @@ function salvarCarrinho(itens) {
 
 mostrarCarrinho();
 
+// Clicar no carrinho abre a página do carrinho
+const botaoCarrinho = document.querySelector(".botao-carrinho");
+
+if (botaoCarrinho) {
+  botaoCarrinho.addEventListener("click", (evento) => {
+    evento.preventDefault();
+    window.location.href = "carrinho.html";
+  });
+}
+
 document.querySelectorAll(".botao-adicionar").forEach((botao) => {
   botao.addEventListener("click", () => {
     const prato = botao.closest(".prato");
