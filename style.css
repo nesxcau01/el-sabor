@@ -573,9 +573,17 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   position: relative;
   width: 100%;
   aspect-ratio: 1.4 / 1;
-  border-radius: 20px;
-  background: var(--fundo-espaco);
-  /* com foto: background: url("imagens/mexico.jpg") center / cover no-repeat; */
+  border-radius: 24px;
+}
+
+.historia-imagem img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 24px;
 }
 
 .historia-espaco-foto {
@@ -744,8 +752,23 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
 .prato-foto {
   position: relative;
   height: 230px;
+  overflow: hidden;
   background: var(--fundo-foto) center / cover no-repeat;
   border-bottom: 1px solid var(--borda);
+}
+
+.prato-foto img {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.prato-foto:hover img {
+  transform: scale(1.12);
 }
 
 .prato-espaco-foto {
