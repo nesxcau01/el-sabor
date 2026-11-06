@@ -49,7 +49,7 @@ body {
   transition: background 0.3s, color 0.3s;
 }
 
-/* Navbar */
+
 .barra-topo {
   position: sticky;
   top: 0;
@@ -70,7 +70,7 @@ body {
   box-shadow: 0 4px 20px var(--sombra);
 }
 
-/* Logo */
+
 .logo {
   display: flex;
   flex-direction: column;
@@ -93,7 +93,7 @@ body {
   color: var(--laranja);
 }
 
-/* Links */
+
 .menu-links {
   display: flex;
   gap: 48px;
@@ -244,7 +244,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
 .botao-menu.aberto span:nth-child(2) { opacity: 0; }
 .botao-menu.aberto span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
-/* Responsivo */
+
 @media (max-width: 1200px) {
   .barra-topo { padding: 0 24px; }
 
@@ -281,7 +281,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   .botao-principal { padding: 9px 12px; }
 }
 
-/* Hero */
+
 .destaque {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -375,7 +375,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
 
 .estrela { color: #f5c542; }
 
-/* Lado visual */
+
 .destaque-visual {
   position: relative;
   display: grid;
@@ -485,7 +485,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   .icone-taco { left: -40px; }
 }
 
-/* Por que El Sabor Sagrado */
+
 .porque {
   padding: 90px 0 70px;
   text-align: center;
@@ -504,7 +504,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   color: var(--texto);
 }
 
-/* Cards */
+
 .cartoes {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -888,7 +888,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   .cardapio-grade { grid-template-columns: 1fr; }
 }
 
-/* Nível de pimenta */
+
 .pimenta {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -985,7 +985,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   .pimenta-barras i { width: 44px; }
 }
 
-/* Avaliações */
+
 .avaliacoes {
   padding: 100px 60px 120px;
 }
@@ -1175,7 +1175,7 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
   .reserva-formulario { padding: 28px 22px 32px; }
 }
 
-/* Rodapé */
+
 .rodape {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -1237,7 +1237,6 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
   .rodape-marca { grid-column: 1 / -1; }
 }
 
-/* Página do cardápio */
 .cardapio-pagina {
   padding-top: 90px;
 }
