@@ -262,3 +262,18 @@ if (listaItens) {
 
   desenharCarrinho();
 }
+
+document.querySelectorAll("input[data-tipo]").forEach((campo) => {
+  campo.addEventListener("focus", () => {
+    campo.type = campo.dataset.tipo;
+    if (campo.showPicker) {
+      try {
+        campo.showPicker();
+      } catch (erro) {}
+    }
+  });
+
+  campo.addEventListener("blur", () => {
+    if (campo.value === "") campo.type = "text";
+  });
+});

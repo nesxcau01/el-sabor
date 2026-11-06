@@ -1676,3 +1676,18 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
 @media (max-width: 480px) {
   .carrinho-pagina { padding: 50px 16px 80px; }
 }
+
+.reserva-formulario input {
+  display: block;
+  box-sizing: border-box;
+  height: 52px;
+  margin: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  text-align: left;
+}
+
+.reserva-formulario input::-webkit-date-and-time-value {
+  text-align: left;
+  min-height: 1.2em;
+}
