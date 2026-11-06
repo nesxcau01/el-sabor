@@ -1635,3 +1635,44 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
   min-width: 0;
   max-width: 100%;
 }
+
+@media (max-width: 480px) {
+  .barra-topo {
+    gap: 8px;
+    padding: 0 16px;
+  }
+
+  .logo-titulo { font-size: 18px; letter-spacing: 1px; }
+  .logo-subtitulo { font-size: 10px; letter-spacing: 1.5px; }
+
+  .acoes { gap: 6px; }
+  .botao-icone { width: 32px; height: 32px; }
+  .botao-principal { padding: 8px 10px; font-size: 12px; white-space: nowrap; }
+
+  .reserva { padding: 50px 16px 80px; }
+  .reserva-formulario { padding: 24px 16px 28px; }
+  .reserva-formulario h3 { font-size: 26px; }
+  .reserva-formulario input { padding: 14px 12px; font-size: 14px; }
+  .formulario-linha { gap: 10px; }
+}
+
+@media (max-width: 380px) {
+  .formulario-linha { grid-template-columns: minmax(0, 1fr); }
+  .botao-principal { display: none; }
+}
+
+@media (max-width: 380px) {
+  .destaque > *,
+  .pimenta > * { min-width: 0; }
+
+  .destaque h1 { font-size: 40px; overflow-wrap: break-word; }
+  .pimenta { padding-left: 16px; padding-right: 16px; }
+}
+
+@media (max-width: 380px) {
+  .numeros { gap: 24px; }
+}
+
+@media (max-width: 480px) {
+  .carrinho-pagina { padding: 50px 16px 80px; }
+}
