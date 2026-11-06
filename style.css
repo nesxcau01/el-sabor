@@ -1658,7 +1658,6 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
 
 @media (max-width: 380px) {
   .formulario-linha { grid-template-columns: minmax(0, 1fr); }
-  .botao-principal { display: none; }
 }
 
 @media (max-width: 380px) {
@@ -1734,4 +1733,20 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
 
 @media (max-width: 480px) {
   .aviso { right: 16px; bottom: 16px; }
+}
+
+.menu-pedir,
+.botao-entrar {
+  display: none;
+}
+
+@media (max-width: 1000px) {
+  .menu-links .menu-pedir {
+    display: block;
+    font-weight: 600;
+    color: var(--laranja);
+  }
+
+  .botao-pedir { display: none; }
+  .botao-entrar { display: block; }
 }

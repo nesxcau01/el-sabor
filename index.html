@@ -3,27 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cardápio | El Sabor Sagrado</title>
+  <title>El Sabor Sagrado</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <input type="checkbox" id="interruptor-tema" class="tema-checkbox">
 
   <header class="barra-topo">
-    <a href="index.html" class="logo">
+    <a href="#inicio" class="logo">
       <span class="logo-titulo">EL SABOR</span>
       <span class="logo-subtitulo">SAGRADO</span>
     </a>
 
     <nav class="menu-links">
-      <a href="index.html">Início</a>
-      <a href="index.html#sobre">Sobre Nós</a>
-      <a href="cardapio.html" class="ativo">Cardápio</a>
-      <a href="index.html#depoimentos">Depoimentos</a>
-      <a href="index.html#contato">Contato</a>
+      <a href="#inicio" class="ativo">Início</a>
+      <a href="#sobre">Sobre Nós</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="#depoimentos">Depoimentos</a>
+      <a href="#contato">Contato</a>
+      <a href="cardapio.html" class="menu-pedir">Pedir agora</a>
     </nav>
 
     <div class="acoes">
@@ -36,8 +36,9 @@
         <span class="contador">0</span>
       </a>
 
-      <a href="#entrar" class="link-entrar">Entrar</a>
-      <a href="#pedir" class="botao-principal">Pedir agora</a>
+      <a href="login.html" class="link-entrar">Entrar</a>
+      <a href="cardapio.html" class="botao-principal botao-pedir">Pedir agora</a>
+      <a href="login.html" class="botao-principal botao-entrar">Entrar</a>
 
       <button class="botao-menu" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -46,128 +47,131 @@
   </header>
 
   <main>
-    <section class="cardapio cardapio-pagina" id="cardapio">
-      <div class="cardapio-cabecalho">
-        <span class="sobretitulo">SABORES DO MÉXICO</span>
-        <h1>Nosso Cardápio</h1>
-        <p>Escolha seus favoritos e monte seu pedido.</p>
+    <section class="destaque" id="inicio">
+      <div class="destaque-texto">
+        <span class="sobretitulo">SABOR · TRADIÇÃO · PAIXÃO</span>
+
+        <h1>
+          A Autêntica<br>
+          <em>Experiência</em><br>
+          Mex-Tex na Sua Mesa
+        </h1>
+
+        <p class="destaque-descricao">
+          Ingredientes frescos, receitas artesanais e todo o sabor do México
+          preparado especialmente para você.
+        </p>
+
+        <div class="destaque-botoes">
+          <a href="cardapio.html" class="botao-principal botao-pequeno">Ver Cardápio</a>
+          <a href="#whatsapp" class="botao-whatsapp botao-pequeno">Pedir pelo WhatsApp</a>
+        </div>
+
+        <ul class="numeros">
+          <li>
+            <strong>4.9/5</strong>
+            <span><b class="estrela">★</b> Avaliação</span>
+          </li>
+          <li>
+            <strong>+2500</strong>
+            <span>Clientes satisfeitos</span>
+          </li>
+          <li>
+            <strong>25 min</strong>
+            <span>Entrega média</span>
+          </li>
+        </ul>
       </div>
 
-      <label class="busca-cardapio">
-        <span>🔍</span>
-        <input type="search" placeholder="Buscar" aria-label="Buscar no cardápio">
-      </label>
+      <div class="destaque-visual">
+        <div class="pilha">
+          <div class="icone-flutuante icone-abacate">🥑</div>
+          <div class="icone-flutuante icone-taco">🌮</div>
+          <div class="icone-flutuante icone-pimenta">🌶️</div>
 
-      <div class="filtros">
-        <button class="filtro ativo" data-categoria="todos">Todos</button>
-        <button class="filtro" data-categoria="tacos">Tacos</button>
-        <button class="filtro" data-categoria="burritos">Burritos</button>
-        <button class="filtro" data-categoria="quesadillas">Quesadillas</button>
-        <button class="filtro" data-categoria="bebidas">Bebidas</button>
-        <button class="filtro" data-categoria="sobremesas">Sobremesas</button>
+          <div class="foto foto-3"><img src="foto3.webp" alt="Foto 3"></div>
+          <div class="foto foto-2"><img src="foto2.webp" alt="Foto 2"></div>
+          <div class="foto foto-1"><img src="foto1.webp" alt="Foto 1"></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="porque" id="sobre">
+      <span class="sobretitulo">POR QUE EL SABOR SAGRADO?</span>
+      <h2>Feito com paixão, servido com sabor.</h2>
+
+      <div class="cartoes">
+        <article class="cartao">
+          <div class="cartao-icone">🥑</div>
+          <h3>Ingredientes Frescos</h3>
+          <p>Ingredientes selecionados diariamente para garantir o melhor sabor.</p>
+        </article>
+
+        <article class="cartao">
+          <div class="cartao-icone">🌶️</div>
+          <h3>Salsas Artesanais</h3>
+          <p>Nossas salsas são preparadas todos os dias na cozinha da casa.</p>
+        </article>
+
+        <article class="cartao">
+          <div class="cartao-icone">🌱</div>
+          <h3>Opções Veganas</h3>
+          <p>Deliciosas opções veganas e sem glúten para todos.</p>
+        </article>
+
+        <article class="cartao">
+          <div class="cartao-icone">🚀</div>
+          <h3>Entrega Rápida</h3>
+          <p>Seu pedido chega quente, fresco e cheio de sabor.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="historia" id="historia">
+      <div class="historia-imagem">
+        <img src="historia.webp" alt="Nossa história">
+
+        <div class="historia-selo">
+          <strong>+10</strong>
+          <span>Anos levando sabor às mesas.</span>
+        </div>
+      </div>
+
+      <div class="historia-texto">
+        <span class="sobretitulo">NOSSA HISTÓRIA</span>
+        <h2>O México dentro de cada mordida.</h2>
+
+        <p>
+          O El Sabor Sagrado nasceu da paixão pela culinária mexicana e do
+          desejo de trazer uma experiência autêntica, divertida e inesquecível
+          para cada cliente.
+        </p>
+        <p>
+          Nossos pratos combinam receitas tradicionais, ingredientes frescos e
+          um toque moderno desenvolvido pelo nosso chef.
+        </p>
+
+        <ul class="historia-numeros">
+          <li><strong>10+</strong><span>Anos de experiência</span></li>
+          <li><strong>30+</strong><span>Pratos no cardápio</span></li>
+          <li><strong>4.9</strong><span>Nota média</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="cardapio" id="cardapio">
+      <div class="cardapio-topo">
+        <div>
+          <span class="sobretitulo">DO NOSSO CARDÁPIO</span>
+          <h2>Favoritos da casa</h2>
+        </div>
+        <a href="cardapio.html" class="botao-contorno">Ver cardápio completo +</a>
       </div>
 
       <div class="cardapio-grade">
-        <article class="prato" data-categoria="tacos">
+        <article class="prato">
           <div class="prato-foto">
             <span class="etiqueta">MAIS PEDIDO</span>
-            <img src="cardapio1.webp" alt="Tacos">
-          </div>
-          <div class="prato-corpo">
-            <h3>Tacos</h3>
-            <p>Três tacos de milho com carne temperada, pico de gallo e limão.</p>
-            <div class="prato-rodape">
-              <strong class="preco">R$ 32,90</strong>
-              <div class="prato-acoes">
-                <button class="botao-detalhes">Detalhes</button>
-                <button class="botao-adicionar" aria-label="Adicionar Tacos">+</button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="prato" data-categoria="burritos">
-          <div class="prato-foto">
-            <img src="cardapio2.webp" alt="Burrito Azteca">
-          </div>
-          <div class="prato-corpo">
-            <h3>Burrito Azteca</h3>
-            <p>Burrito grande com carne, feijão, arroz e molho picante da casa.</p>
-            <div class="prato-rodape">
-              <strong class="preco">R$ 39,90</strong>
-              <div class="prato-acoes">
-                <button class="botao-detalhes">Detalhes</button>
-                <button class="botao-adicionar" aria-label="Adicionar Burrito Azteca">+</button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="prato" data-categoria="entradas">
-          <div class="prato-foto">
-            <img src="cardapio3.webp" alt="Guacamole Sagrado">
-          </div>
-          <div class="prato-corpo">
-            <h3>Guacamole Sagrado</h3>
-            <p>Guacamole fresco preparado na hora, servido com tortilla chips.</p>
-            <div class="prato-rodape">
-              <strong class="preco">R$ 24,90</strong>
-              <div class="prato-acoes">
-                <button class="botao-detalhes">Detalhes</button>
-                <button class="botao-adicionar" aria-label="Adicionar Guacamole Sagrado">+</button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="prato" data-categoria="quesadillas">
-          <div class="prato-foto">
-            <span class="etiqueta">MAIS PEDIDO</span>
-            <img src="cardapio4.webp" alt="Quesadilla Mexicana">
-          </div>
-          <div class="prato-corpo">
-            <h3>Quesadilla Mexicana</h3>
-            <p>Tortilha grelhada com queijo derretido, pimentão e frango desfiado.</p>
-            <div class="prato-rodape">
-              <strong class="preco">R$ 29,90</strong>
-              <div class="prato-acoes">
-                <button class="botao-detalhes">Detalhes</button>
-                <button class="botao-adicionar" aria-label="Adicionar Quesadilla Mexicana">+</button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="prato" data-categoria="entradas">
-          <div class="prato-foto">
-            <img src="cardapio5.webp" alt="Nachos Fiesta">
-          </div>
-          <div class="prato-corpo">
-            <h3>Nachos Fiesta</h3>
-            <p>Nachos crocantes com queijo, feijão, jalapeño e creme azedo.</p>
-            <div class="prato-rodape">
-              <strong class="preco">R$ 34,90</strong>
-              <div class="prato-acoes">
-                <button class="botao-detalhes">Detalhes</button>
-                <button class="botao-adicionar" aria-label="Adicionar Nachos Fiesta">+</button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="prato" data-categoria="bebidas">
-          <div class="prato-foto">
-            <img src="cardapio6.webp" alt="Margarita Clássica">
-          </div>
-          <div class="prato-corpo">
-            <h3>Margarita Clássica</h3>
-            <p>Drink de tequila, limão fresco e sal na borda do copo.</p>
-            <div class="prato-rodape">
-              <strong class="preco">R$ 19,90</strong>
-              <div class="prato-acoes">
-                <button class="botao-detalhes">Detalhes</button>
-                <button class="botao-adicionar" aria-label="Adicionar Margarita Clássica">+</button>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="prato" data-categoria="tacos">
-          <div class="prato-foto">
             <img src="cardapio7.webp" alt="Taco Vegano">
           </div>
           <div class="prato-corpo">
@@ -182,7 +186,8 @@
             </div>
           </div>
         </article>
-        <article class="prato" data-categoria="sobremesas">
+
+        <article class="prato">
           <div class="prato-foto">
             <img src="cardapio8.webp" alt="Churros Mexicanos">
           </div>
@@ -198,7 +203,8 @@
             </div>
           </div>
         </article>
-        <article class="prato" data-categoria="burritos">
+
+        <article class="prato">
           <div class="prato-foto">
             <img src="cardapio9.webp" alt="Burrito Vegano">
           </div>
@@ -214,8 +220,10 @@
             </div>
           </div>
         </article>
-        <article class="prato" data-categoria="bebidas">
+
+        <article class="prato">
           <div class="prato-foto">
+            <span class="etiqueta">MAIS PEDIDO</span>
             <img src="cardapio10.webp" alt="Paloma Mexicana">
           </div>
           <div class="prato-corpo">
@@ -230,7 +238,8 @@
             </div>
           </div>
         </article>
-        <article class="prato" data-categoria="tacos">
+
+        <article class="prato">
           <div class="prato-foto">
             <img src="cardapio11.webp" alt="Taco Pastor">
           </div>
@@ -246,7 +255,8 @@
             </div>
           </div>
         </article>
-        <article class="prato" data-categoria="sobremesas">
+
+        <article class="prato">
           <div class="prato-foto">
             <img src="cardapio12.webp" alt="Tres Leches">
           </div>
@@ -263,8 +273,112 @@
           </div>
         </article>
       </div>
+    </section>
 
-      <p class="sem-resultado" hidden>Nenhum prato encontrado.</p>
+    <section class="pimenta" id="pimenta">
+      <div class="pimenta-texto">
+        <span class="sobretitulo">Atenção</span>
+        <h2>Escolha o seu nível de pimenta!</h2>
+        <p>
+          Do suave ao "meu Deus, por que fiz isso?", temos uma salsa para cada
+          aventureiro.
+        </p>
+        <a href="cardapio.html" class="botao-principal botao-pequeno">Explorar Cardápio</a>
+      </div>
+
+      <div class="pimenta-lista">
+        <article class="pimenta-cartao">
+          <div class="pimenta-topo">
+            <h3><span>🥑</span> Guacamole</h3>
+            <small>Suave</small>
+          </div>
+          <div class="pimenta-barras"><i></i></div>
+        </article>
+
+        <article class="pimenta-cartao">
+          <div class="pimenta-topo">
+            <h3><span>🍅</span> Pico de Gallo</h3>
+            <small>Leve</small>
+          </div>
+          <div class="pimenta-barras"><i></i><i></i></div>
+        </article>
+
+        <article class="pimenta-cartao">
+          <div class="pimenta-topo">
+            <h3><span>🌶️</span> Chipotle</h3>
+            <small>Médio</small>
+          </div>
+          <div class="pimenta-barras"><i></i><i></i><i></i></div>
+        </article>
+
+        <article class="pimenta-cartao">
+          <div class="pimenta-topo">
+            <h3><span>🔥</span> Habanero Sagrado</h3>
+            <small>Extremo</small>
+          </div>
+          <div class="pimenta-barras"><i></i><i></i><i></i><i></i><i></i></div>
+        </article>
+      </div>
+    </section>
+
+    <section class="avaliacoes" id="depoimentos">
+      <h2>Avaliações da casa</h2>
+
+      <div class="avaliacoes-grade">
+        <article class="avaliacao">
+          <div class="estrelas">★★★★★</div>
+          <p>"Os tacos são simplesmente incríveis! A salsa de habanero é para quem realmente gosta de emoção."</p>
+          <div class="avaliacao-autor">
+            <span class="avatar">M</span>
+            <strong>Mariana Guedes</strong>
+          </div>
+        </article>
+
+        <article class="avaliacao">
+          <div class="estrelas">★★★★★</div>
+          <p>"Ambiente maravilhoso, comida deliciosa e atendimento impecável. Já virou nosso restaurante favorito."</p>
+          <div class="avaliacao-autor">
+            <span class="avatar">R</span>
+            <strong>Rafael Lopes</strong>
+          </div>
+        </article>
+
+        <article class="avaliacao">
+          <div class="estrelas">★★★★★</div>
+          <p>"O burrito é enorme e muito saboroso. A entrega também foi super rápida. Recomendo demais!"</p>
+          <div class="avaliacao-autor">
+            <span class="avatar">A</span>
+            <strong>Ana Maria</strong>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="reserva" id="contato">
+      <div class="reserva-texto">
+        <h2>Venha fazer a sua reserva!</h2>
+        <p>
+          Estamos esperando você para uma experiência cheia de sabor, música e
+          muita comida boa.
+        </p>
+      </div>
+
+      <form class="reserva-formulario" action="#contato">
+        <h3>Reserve sua mesa</h3>
+        <p class="formulario-subtitulo">Preencha os dados :</p>
+
+        <input type="text" name="nome" placeholder="Seu Nome" aria-label="Seu nome" required>
+        <input type="tel" name="telefone" placeholder="Telefone" aria-label="Telefone" required>
+
+        <div class="formulario-linha">
+          <input type="text" name="data" placeholder="Data" data-tipo="date" aria-label="Data da reserva" required>
+          <input type="text" name="hora" placeholder="Hora" data-tipo="time" aria-label="Horário da reserva" required>
+        </div>
+
+        <input type="number" name="pessoas" min="1" max="30" placeholder="Número de pessoas" aria-label="Número de pessoas" required>
+
+        <button type="submit" class="botao-enviar">Reservar sua mesa</button>
+      </form>
     </section>
   </main>
 
@@ -277,10 +391,10 @@
 
     <div class="rodape-coluna">
       <h4>NAVEGAÇÃO</h4>
-      <a href="index.html">Início</a>
-      <a href="index.html#sobre">Sobre Nós</a>
+      <a href="#inicio" class="ativo">Início</a>
+      <a href="#sobre">Sobre Nós</a>
       <a href="cardapio.html">Cardápio</a>
-      <a href="index.html#depoimentos">Depoimentos</a>
+      <a href="#depoimentos">Depoimentos</a>
     </div>
 
     <div class="rodape-coluna">
