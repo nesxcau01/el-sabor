@@ -89,6 +89,24 @@ if (botaoCarrinho) {
   });
 }
 
+let aviso = null;
+let tempoAviso = null;
+
+function mostrarAviso(texto) {
+  if (!aviso) {
+    aviso = document.createElement("div");
+    aviso.className = "aviso";
+    document.body.appendChild(aviso);
+  }
+
+  aviso.innerHTML = '<span class="aviso-icone">✓</span>';
+  aviso.append(texto);
+  aviso.classList.add("visivel");
+
+  clearTimeout(tempoAviso);
+  tempoAviso = setTimeout(() => aviso.classList.remove("visivel"), 2500);
+}
+
 document.querySelectorAll(".botao-adicionar").forEach((botao) => {
   botao.addEventListener("click", () => {
     const prato = botao.closest(".prato");
@@ -105,6 +123,7 @@ document.querySelectorAll(".botao-adicionar").forEach((botao) => {
     }
 
     salvarCarrinho(itens);
+    mostrarAviso(nome + " foi adicionado ao seu carrinho.");
   });
 });
 

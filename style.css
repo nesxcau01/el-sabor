@@ -1691,3 +1691,47 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
   text-align: left;
   min-height: 1.2em;
 }
+
+.aviso {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  max-width: calc(100% - 32px);
+  padding: 16px 22px;
+  font-size: 14px;
+  color: var(--texto);
+  background: var(--fundo-suave);
+  border: 1px solid var(--borda);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px var(--sombra-forte);
+  opacity: 0;
+  transform: translateY(20px);
+  pointer-events: none;
+  transition: opacity 0.3s, transform 0.3s;
+}
+
+.aviso.visivel {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.aviso-icone {
+  flex-shrink: 0;
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  font-size: 13px;
+  font-weight: 700;
+  color: #fff;
+  background: #2faa4a;
+  border-radius: 5px;
+}
+
+@media (max-width: 480px) {
+  .aviso { right: 16px; bottom: 16px; }
+}
