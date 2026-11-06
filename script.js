@@ -205,6 +205,7 @@ if (listaItens) {
   const campoCupom = document.querySelector(".cupom input");
   const avisoCupom = document.querySelector(".cupom-aviso");
   const botaoFinalizar = document.querySelector(".botao-finalizar");
+  const botaoEsvaziar = document.querySelector(".botao-esvaziar");
 
   const taxaEntrega = 0;
   const cupomValido = "SAGRADO10";
@@ -264,6 +265,7 @@ if (listaItens) {
     valorDesconto.textContent = "- " + emReais(desconto);
     valorTotal.textContent = emReais(subtotal + entrega - desconto);
     botaoFinalizar.disabled = itens.length === 0;
+    botaoEsvaziar.disabled = itens.length === 0;
   }
 
   formularioCupom.addEventListener("submit", (evento) => {
@@ -273,10 +275,38 @@ if (listaItens) {
     desenharCarrinho();
   });
 
-  botaoFinalizar.addEventListener("click", () => {
-    alert("Pedido finalizado! Obrigado pela preferência.");
+  function mostrarModal() {
+    const fundo = document.createElement("div");
+    fundo.className = "modal-fundo";
+    fundo.innerHTML = `
+      <div class="modal" role="dialog" aria-modal="true">
+        <span class="modal-icone">✓</span>
+        <h2>Pedido finalizado!</h2>
+        <p>Obrigado pela preferência. Seu pedido foi enviado e já estamos preparando tudo.</p>
+        <a href="cardapio.html" class="botao-principal">Voltar ao cardápio</a>
+        <button type="button" class="modal-fechar">Fechar</button>
+      </div>`;
+    document.body.appendChild(fundo);
+
+    function fechar() {
+      fundo.remove();
+    }
+
+    fundo.querySelector(".modal-fechar").addEventListener("click", fechar);
+    fundo.addEventListener("click", (evento) => {
+      if (evento.target === fundo) fechar();
+    });
+  }
+
+  botaoEsvaziar.addEventListener("click", () => {
     salvarCarrinho([]);
     desenharCarrinho();
+  });
+
+  botaoFinalizar.addEventListener("click", () => {
+    salvarCarrinho([]);
+    desenharCarrinho();
+    mostrarModal();
   });
 
   desenharCarrinho();
@@ -295,4 +325,4 @@ document.querySelectorAll("input[data-tipo]").forEach((campo) => {
   campo.addEventListener("blur", () => {
     if (campo.value === "") campo.type = "text";
   });
-});
+});v
