@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entrar | El Sabor Sagrado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <input type="checkbox" id="interruptor-tema" class="tema-checkbox">
+
+  <header class="barra-topo">
+    <a href="index.html" class="logo">
+      <span class="logo-titulo">EL SABOR</span>
+      <span class="logo-subtitulo">SAGRADO</span>
+    </a>
+
+    <nav class="menu-links">
+      <a href="index.html">Início</a>
+      <a href="index.html#sobre">Sobre Nós</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="index.html#depoimentos">Depoimentos</a>
+      <a href="index.html#contato">Contato</a>
+      <a href="cardapio.html" class="menu-pedir">Pedir agora</a>
+    </nav>
+
+    <div class="acoes">
+      <label class="botao-icone botao-tema" for="interruptor-tema" aria-label="Modo claro ou escuro"><span class="tema-icone"></span></label>
+
+      <a href="cardapio.html" class="botao-icone" aria-label="Cardápio">🔍</a>
+
+      <a href="carrinho.html" class="botao-icone botao-carrinho" aria-label="Carrinho">
+        🛒
+        <span class="contador">0</span>
+      </a>
+
+      <a href="login.html" class="link-entrar">Entrar</a>
+      <a href="login.html#cadastro" class="link-entrar">Cadastro</a>
+      <a href="cardapio.html" class="botao-principal botao-pedir">Pedir agora</a>
+      <a href="login.html" class="botao-principal botao-entrar">Entrar</a>
+      <a href="login.html#cadastro" class="botao-principal botao-entrar">Cadastro</a>
+
+      <button class="botao-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="login-pagina">
+      <div class="login-cartao">
+        <div class="login-abas">
+          <button type="button" class="login-aba ativo" data-aba="entrar">Entrar</button>
+          <button type="button" class="login-aba" data-aba="cadastrar">Cadastrar</button>
+        </div>
+
+        <form class="login-formulario ativo" id="formulario-entrar">
+          <h1>Bem-vindo de volta</h1>
+          <p>Entre com seu e-mail e sua senha.</p>
+          <input type="email" name="email" placeholder="E-mail" aria-label="E-mail" required>
+          <input type="password" name="senha" placeholder="Senha" aria-label="Senha" required>
+          <span class="login-mensagem"></span>
+          <button type="submit" class="botao-enviar">Entrar</button>
+        </form>
+
+        <form class="login-formulario" id="formulario-cadastrar">
+          <h1>Crie sua conta</h1>
+          <p>Preencha os dados para se cadastrar.</p>
+          <input type="text" name="nome" placeholder="Nome completo" aria-label="Nome completo" maxlength="100" required>
+          <input type="email" name="email" placeholder="E-mail" aria-label="E-mail" maxlength="100" required>
+          <input type="password" name="senha" placeholder="Senha (mínimo 6 caracteres)" aria-label="Senha" minlength="6" required>
+          <input type="password" name="confirmar" placeholder="Confirmar senha" aria-label="Confirmar senha" minlength="6" required>
+          <span class="login-mensagem"></span>
+          <button type="submit" class="botao-enviar">Criar conta</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape" id="rodape">
+    <div class="rodape-marca">
+      <span class="logo-titulo">EL SABOR</span>
+      <span class="logo-subtitulo">SAGRADO</span>
+      <p>A autêntica experiência Mex-Tex na sua mesa.</p>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>NAVEGAÇÃO</h4>
+      <a href="index.html">Início</a>
+      <a href="index.html#sobre">Sobre Nós</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="index.html#depoimentos">Depoimentos</a>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>MINHA CONTA</h4>
+      <a href="login.html">Login</a>
+      <a href="login.html#cadastro">Criar conta</a>
+      <a href="#pedidos">Meus pedidos</a>
+      <a href="#perfil">Meu perfil</a>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>CONTATO</h4>
+      <span>Av. México, 123</span>
+      <span>+55 (00) 99999-9999</span>
+      <span>Ter - Dom: 11h às 23h</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

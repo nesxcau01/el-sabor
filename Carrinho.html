@@ -37,11 +37,11 @@
         <span class="contador">0</span>
       </a>
 
-      <a href="#entrar" class="link-entrar">Entrar</a>
-      <a href="#cadastro" class="link-entrar">Cadastro</a>
+      <a href="login.html" class="link-entrar">Entrar</a>
+      <a href="login.html#cadastro" class="link-entrar">Cadastro</a>
       <a href="cardapio.html" class="botao-principal botao-pedir">Pedir agora</a>
-      <a href="#entrar" class="botao-principal botao-entrar">Entrar</a>
-      <a href="#cadastro" class="botao-principal botao-entrar">Cadastro</a>
+      <a href="login.html" class="botao-principal botao-entrar">Entrar</a>
+      <a href="login.html#cadastro" class="botao-principal botao-entrar">Cadastro</a>
 
       <button class="botao-menu" aria-label="Menu">
         <span></span><span></span><span></span>
@@ -65,6 +65,36 @@
           </div>
 
           <ul class="lista-itens"></ul>
+
+          <form class="dados-pedido" id="dados-pedido" hidden>
+            <h2>Seus dados</h2>
+            <input type="text" name="nome" placeholder="Nome completo" aria-label="Nome completo" maxlength="100" required>
+            <div class="dados-linha">
+              <input type="text" name="cpf" placeholder="CPF" aria-label="CPF" inputmode="numeric" maxlength="14" required>
+              <input type="tel" name="telefone" placeholder="Telefone com DDD" aria-label="Telefone" inputmode="numeric" maxlength="15" required>
+            </div>
+            <input type="email" name="email" placeholder="E-mail" aria-label="E-mail" maxlength="100" required>
+
+            <h2>Entrega</h2>
+            <input type="text" name="cep" placeholder="CEP" aria-label="CEP" inputmode="numeric" maxlength="9" required>
+            <input type="text" name="endereco" placeholder="Endereço" aria-label="Endereço" maxlength="200" required>
+            <div class="dados-linha">
+              <input type="text" name="numero" placeholder="Número" aria-label="Número" maxlength="10" required>
+              <input type="text" name="complemento" placeholder="Complemento (opcional)" aria-label="Complemento" maxlength="100">
+            </div>
+            <div class="dados-linha">
+              <input type="text" name="bairro" placeholder="Bairro" aria-label="Bairro" maxlength="100" required>
+              <input type="text" name="cidade" placeholder="Cidade" aria-label="Cidade" maxlength="100" required>
+            </div>
+
+            <h2>Pagamento</h2>
+            <select name="pagamento" aria-label="Forma de pagamento" required>
+              <option value="Pix">Pix</option>
+              <option value="Cartão de crédito">Cartão de crédito</option>
+              <option value="Cartão de débito">Cartão de débito</option>
+              <option value="Dinheiro">Dinheiro</option>
+            </select>
+          </form>
         </div>
 
         <aside class="resumo">
@@ -90,8 +120,8 @@
             <strong class="valor-total">R$ 0,00</strong>
           </div>
 
-          <button class="botao-principal botao-finalizar" disabled>Finalizar pedido</button>
-          <button class="botao-esvaziar" disabled>Esvaziar carrinho</button>
+          <button type="submit" form="dados-pedido" class="botao-principal botao-finalizar" disabled>Finalizar pedido</button>
+          <button type="button" class="botao-esvaziar" disabled>Esvaziar carrinho</button>
           <a href="cardapio.html" class="continuar">Continuar comprando</a>
         </aside>
       </div>
@@ -115,8 +145,8 @@
 
     <div class="rodape-coluna">
       <h4>MINHA CONTA</h4>
-      <a href="#entrar">Login</a>
-      <a href="#criar-conta">Criar conta</a>
+      <a href="login.html">Login</a>
+      <a href="login.html#cadastro">Criar conta</a>
       <a href="#pedidos">Meus pedidos</a>
       <a href="#perfil">Meu perfil</a>
     </div>

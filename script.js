@@ -206,11 +206,16 @@ if (listaItens) {
   const avisoCupom = document.querySelector(".cupom-aviso");
   const botaoFinalizar = document.querySelector(".botao-finalizar");
   const botaoEsvaziar = document.querySelector(".botao-esvaziar");
+  const formularioPedido = document.querySelector("#dados-pedido");
 
   const taxaEntrega = 0;
-  const cupomValido = "SAGRADO10";
-  const descontoDoCupom = 0.1;
-  let cupomAplicado = false;
+  const cupons = {
+    SAGRADO10: 0.1,
+    DAVI10: 0.1,
+    NESXCAU10: 0.1,
+    MARIAOFF: 0.5,
+  };
+  let descontoDoCupom = 0;
 
   function emReais(valor) {
     return valor.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
@@ -258,7 +263,7 @@ if (listaItens) {
 
     const subtotal = itens.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
     const entrega = itens.length > 0 ? taxaEntrega : 0;
-    const desconto = cupomAplicado ? subtotal * descontoDoCupom : 0;
+    const desconto = subtotal * descontoDoCupom;
 
     valorSubtotal.textContent = emReais(subtotal);
     valorEntrega.textContent = emReais(entrega);
@@ -266,12 +271,13 @@ if (listaItens) {
     valorTotal.textContent = emReais(subtotal + entrega - desconto);
     botaoFinalizar.disabled = itens.length === 0;
     botaoEsvaziar.disabled = itens.length === 0;
+    if (formularioPedido) formularioPedido.hidden = itens.length === 0;
   }
 
   formularioCupom.addEventListener("submit", (evento) => {
     evento.preventDefault();
-    cupomAplicado = campoCupom.value.trim().toUpperCase() === cupomValido;
-    avisoCupom.textContent = cupomAplicado ? "Cupom aplicado: 10% de desconto." : "Cupom inválido.";
+    descontoDoCupom = cupons[campoCupom.value.trim().toUpperCase()] || 0;
+    avisoCupom.textContent = descontoDoCupom > 0 ? "Cupom aplicado: " + descontoDoCupom * 100 + "% de desconto." : "Cupom inválido.";
     desenharCarrinho();
   });
 
@@ -284,6 +290,7 @@ if (listaItens) {
         <h2>Pedido finalizado!</h2>
         <p>Obrigado pela preferência. Seu pedido foi enviado e já estamos preparando tudo.</p>
         <a href="cardapio.html" class="botao-principal">Voltar ao cardápio</a>
+        <button type="button" class="modal-baixar">Baixar pedidos (.json)</button>
         <button type="button" class="modal-fechar">Fechar</button>
       </div>`;
     document.body.appendChild(fundo);
@@ -292,6 +299,7 @@ if (listaItens) {
       fundo.remove();
     }
 
+    fundo.querySelector(".modal-baixar").addEventListener("click", baixarPedidos);
     fundo.querySelector(".modal-fechar").addEventListener("click", fechar);
     fundo.addEventListener("click", (evento) => {
       if (evento.target === fundo) fechar();
@@ -303,11 +311,130 @@ if (listaItens) {
     desenharCarrinho();
   });
 
-  botaoFinalizar.addEventListener("click", () => {
-    salvarCarrinho([]);
-    desenharCarrinho();
-    mostrarModal();
-  });
+  if (formularioPedido) {
+    const campoTelefone = formularioPedido.elements.telefone;
+
+    function telefoneValido(numeros) {
+      const ddd = Number(numeros.slice(0, 2));
+      if (ddd < 11 || ddd > 99) return false;
+      if (numeros.length === 11) return numeros[2] === "9";
+      return numeros.length === 10 && numeros[2] !== "0";
+    }
+
+    campoTelefone.addEventListener("input", () => {
+      const numeros = campoTelefone.value.replace(/\D/g, "").slice(0, 11);
+      let texto = numeros;
+
+      if (numeros.length > 10) {
+        texto = "(" + numeros.slice(0, 2) + ") " + numeros.slice(2, 7) + "-" + numeros.slice(7);
+      } else if (numeros.length > 6) {
+        texto = "(" + numeros.slice(0, 2) + ") " + numeros.slice(2, 6) + "-" + numeros.slice(6);
+      } else if (numeros.length > 2) {
+        texto = "(" + numeros.slice(0, 2) + ") " + numeros.slice(2);
+      }
+
+      campoTelefone.value = texto;
+      campoTelefone.setCustomValidity(telefoneValido(numeros) ? "" : "Telefone inválido. Digite o DDD e o número.");
+      campoTelefone.classList.toggle("invalido", numeros.length >= 10 && !telefoneValido(numeros));
+    });
+
+    const campoCep = formularioPedido.elements.cep;
+    const campoCpf = formularioPedido.elements.cpf;
+
+    function cpfValido(cpf) {
+      if (cpf.length !== 11 || /^(\d)\1{10}$/.test(cpf)) return false;
+
+      for (let tamanho = 9; tamanho <= 10; tamanho++) {
+        let soma = 0;
+        for (let i = 0; i < tamanho; i++) {
+          soma += Number(cpf[i]) * (tamanho + 1 - i);
+        }
+        const digito = ((soma * 10) % 11) % 10;
+        if (digito !== Number(cpf[tamanho])) return false;
+      }
+
+      return true;
+    }
+
+    campoCpf.addEventListener("input", () => {
+      const numeros = campoCpf.value.replace(/\D/g, "").slice(0, 11);
+      campoCpf.value = numeros
+        .replace(/^(\d{3})(\d)/, "$1.$2")
+        .replace(/^(\d{3})\.(\d{3})(\d)/, "$1.$2.$3")
+        .replace(/\.(\d{3})(\d)/, ".$1-$2");
+
+      campoCpf.setCustomValidity(cpfValido(numeros) ? "" : "CPF inválido");
+
+      if (cpfValido(numeros)) {
+        const anterior = lerPedidos().reverse().find((pedido) => pedido.cliente.cpf === numeros);
+
+        if (anterior) {
+          formularioPedido.elements.nome.value = anterior.cliente.nome;
+          formularioPedido.elements.email.value = anterior.cliente.email;
+          formularioPedido.elements.telefone.value = anterior.cliente.telefone;
+          formularioPedido.elements.telefone.dispatchEvent(new Event("input"));
+        }
+      }
+      campoCpf.classList.toggle("invalido", numeros.length === 11 && !cpfValido(numeros));
+    });
+
+    campoCep.addEventListener("input", () => {
+      const numeros = campoCep.value.replace(/\D/g, "").slice(0, 8);
+      campoCep.value = numeros.length > 5 ? numeros.slice(0, 5) + "-" + numeros.slice(5) : numeros;
+
+      if (numeros.length === 8) buscarCep(numeros);
+    });
+
+    async function buscarCep(cep) {
+      try {
+        const resposta = await fetch("https://viacep.com.br/ws/" + cep + "/json/");
+        const dados = await resposta.json();
+
+        if (dados.erro) {
+          mostrarAviso("CEP não encontrado. Preencha o endereço manualmente.");
+          return;
+        }
+
+        formularioPedido.elements.endereco.value = dados.logradouro;
+        formularioPedido.elements.bairro.value = dados.bairro;
+        formularioPedido.elements.cidade.value = dados.localidade;
+        formularioPedido.elements.numero.focus();
+      } catch (erro) {
+        mostrarAviso("Não foi possível buscar o CEP. Preencha o endereço manualmente.");
+      }
+    }
+
+    botaoFinalizar.addEventListener("click", () => {
+      if (!formularioPedido.checkValidity()) {
+        const campoInvalido = formularioPedido.querySelector(":invalid");
+        const cpfErrado = campoInvalido === campoCpf && campoCpf.value !== "";
+        const telefoneErrado = campoInvalido === campoTelefone && campoTelefone.value !== "";
+        let mensagem = "Preencha seus dados e o endereço de entrega para finalizar.";
+        if (cpfErrado) mensagem = "CPF inválido. Confira os números digitados.";
+        if (telefoneErrado) mensagem = "Telefone inválido. Digite o DDD e o número.";
+        mostrarAviso(mensagem);
+        campoInvalido.scrollIntoView({ behavior: "smooth", block: "center" });
+      }
+    });
+
+    formularioPedido.addEventListener("submit", (evento) => {
+      evento.preventDefault();
+
+      try {
+        const itens = lerCarrinho();
+        const subtotal = itens.reduce((soma, item) => soma + item.preco * item.quantidade, 0);
+        const desconto = subtotal * descontoDoCupom;
+
+        guardarPedido(formularioPedido, itens, subtotal + taxaEntrega - desconto);
+        formularioPedido.reset();
+        salvarCarrinho([]);
+        desenharCarrinho();
+        mostrarModal();
+      } catch (erro) {
+        mostrarAviso("Erro ao finalizar: " + erro.message);
+      }
+    });
+  }
 
   desenharCarrinho();
 }
@@ -325,4 +452,189 @@ document.querySelectorAll("input[data-tipo]").forEach((campo) => {
   campo.addEventListener("blur", () => {
     if (campo.value === "") campo.type = "text";
   });
-});v
+});
+
+const idsDosProdutos = {
+  "Tacos": 1,
+  "Burrito Azteca": 2,
+  "Guacamole Sagrado": 3,
+  "Quesadilla Mexicana": 4,
+  "Nachos Fiesta": 5,
+  "Margarita Clássica": 6,
+  "Taco Vegano": 7,
+  "Churros Mexicanos": 8,
+  "Burrito Vegano": 9,
+  "Paloma Mexicana": 10,
+  "Taco Pastor": 11,
+  "Tres Leches": 12,
+};
+
+function lerPedidos() {
+  try {
+    return JSON.parse(lerSalvo("pedidos")) || [];
+  } catch (erro) {
+    return [];
+  }
+}
+
+function doisDigitos(numero) {
+  return String(numero).padStart(2, "0");
+}
+
+function dataParaMysql(data) {
+  return (
+    data.getFullYear() + "-" + doisDigitos(data.getMonth() + 1) + "-" + doisDigitos(data.getDate()) +
+    " " + doisDigitos(data.getHours()) + ":" + doisDigitos(data.getMinutes()) + ":" + doisDigitos(data.getSeconds())
+  );
+}
+
+function guardarPedido(formulario, itens, valorTotal) {
+  const dados = new FormData(formulario);
+  const pedidos = lerPedidos();
+  const numero = pedidos.length + 1;
+
+  pedidos.push({
+    cliente: {
+      nome: dados.get("nome").trim(),
+      cpf: dados.get("cpf").replace(/\D/g, ""),
+      telefone: dados.get("telefone").replace(/\D/g, ""),
+      email: dados.get("email").trim().toLowerCase(),
+    },
+    pedido: {
+      numero_pedido: "PED" + String(numero).padStart(4, "0"),
+      data_pedido: dataParaMysql(new Date()),
+      valor_total: Math.round(valorTotal * 100) / 100,
+      status: "Preparando",
+    },
+    itens_pedido: itens.map((item) => ({
+      id_produto: idsDosProdutos[item.nome] || null,
+      nome: item.nome,
+      quantidade: item.quantidade,
+      preco_unitario: item.preco,
+      observacao: null,
+    })),
+    entrega: {
+      endereco_entrega: dados.get("endereco").trim(),
+      numero: dados.get("numero").trim(),
+      complemento: dados.get("complemento").trim() || null,
+      bairro: dados.get("bairro").trim(),
+      cidade: dados.get("cidade").trim(),
+      cep: dados.get("cep").trim(),
+      status_entrega: "A caminho",
+    },
+    pagamento: {
+      forma_pagamento: dados.get("pagamento"),
+      valor: Math.round(valorTotal * 100) / 100,
+      status: "Pendente",
+      codigo_pix: null,
+    },
+  });
+
+  salvar("pedidos", JSON.stringify(pedidos));
+}
+
+function baixarPedidos() {
+  const arquivo = new Blob([JSON.stringify(lerPedidos(), null, 2)], { type: "application/json" });
+  const link = document.createElement("a");
+  link.href = URL.createObjectURL(arquivo);
+  link.download = "pedidos.json";
+  link.click();
+  URL.revokeObjectURL(link.href);
+}
+
+function lerUsuarios() {
+  try {
+    return JSON.parse(lerSalvo("usuarios")) || [];
+  } catch (erro) {
+    return [];
+  }
+}
+
+const emailLogado = lerSalvo("usuarioLogado");
+const usuarioLogado = lerUsuarios().find((usuario) => usuario.email === emailLogado);
+
+if (usuarioLogado) {
+  const primeiroNome = usuarioLogado.nome.split(" ")[0];
+
+  document.querySelectorAll('.acoes a[href="login.html"]').forEach((link) => {
+    link.textContent = "Olá, " + primeiroNome;
+    link.removeAttribute("href");
+  });
+
+  document.querySelectorAll('.acoes a[href="login.html#cadastro"]').forEach((link) => {
+    link.textContent = "Sair";
+    link.href = "#";
+    link.addEventListener("click", (evento) => {
+      evento.preventDefault();
+      salvar("usuarioLogado", "");
+      window.location.reload();
+    });
+  });
+
+  const campoNome = document.querySelector("#dados-pedido [name=nome]");
+  const campoEmail = document.querySelector("#dados-pedido [name=email]");
+
+  if (campoNome) {
+    campoNome.value = usuarioLogado.nome;
+    campoEmail.value = usuarioLogado.email;
+  }
+}
+
+const abasLogin = document.querySelectorAll(".login-aba");
+
+if (abasLogin.length > 0) {
+  const formularioEntrar = document.querySelector("#formulario-entrar");
+  const formularioCadastrar = document.querySelector("#formulario-cadastrar");
+
+  function mostrarAba(nomeAba) {
+    const entrar = nomeAba === "entrar";
+    abasLogin.forEach((aba) => aba.classList.toggle("ativo", aba.dataset.aba === nomeAba));
+    formularioEntrar.classList.toggle("ativo", entrar);
+    formularioCadastrar.classList.toggle("ativo", !entrar);
+  }
+
+  abasLogin.forEach((aba) => {
+    aba.addEventListener("click", () => mostrarAba(aba.dataset.aba));
+  });
+
+  if (window.location.hash === "#cadastro") mostrarAba("cadastrar");
+
+  formularioCadastrar.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    const dados = new FormData(formularioCadastrar);
+    const mensagem = formularioCadastrar.querySelector(".login-mensagem");
+    const email = dados.get("email").trim().toLowerCase();
+    const usuarios = lerUsuarios();
+
+    if (dados.get("senha") !== dados.get("confirmar")) {
+      mensagem.textContent = "As senhas não são iguais.";
+      return;
+    }
+
+    if (usuarios.some((usuario) => usuario.email === email)) {
+      mensagem.textContent = "Já existe uma conta com esse e-mail. Clique em Entrar.";
+      return;
+    }
+
+    usuarios.push({ nome: dados.get("nome").trim(), email, senha: dados.get("senha") });
+    salvar("usuarios", JSON.stringify(usuarios));
+    salvar("usuarioLogado", email);
+    window.location.href = "index.html";
+  });
+
+  formularioEntrar.addEventListener("submit", (evento) => {
+    evento.preventDefault();
+    const dados = new FormData(formularioEntrar);
+    const mensagem = formularioEntrar.querySelector(".login-mensagem");
+    const email = dados.get("email").trim().toLowerCase();
+    const usuario = lerUsuarios().find((u) => u.email === email && u.senha === dados.get("senha"));
+
+    if (!usuario) {
+      mensagem.textContent = "E-mail ou senha incorretos. Se ainda não tem conta, clique em Cadastrar.";
+      return;
+    }
+
+    salvar("usuarioLogado", email);
+    window.location.href = "index.html";
+  });
+}
