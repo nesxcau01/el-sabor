@@ -107,23 +107,27 @@ function mostrarAviso(texto) {
   tempoAviso = setTimeout(() => aviso.classList.remove("visivel"), 2500);
 }
 
+function adicionarAoCarrinho(nome, preco, quantidade) {
+  const itens = lerCarrinho();
+  const item = itens.find((i) => i.nome === nome);
+
+  if (item) {
+    item.quantidade += quantidade;
+  } else {
+    itens.push({ nome, preco, quantidade });
+  }
+
+  salvarCarrinho(itens);
+  mostrarAviso(nome + " foi adicionado ao seu carrinho.");
+}
+
 document.querySelectorAll(".botao-adicionar").forEach((botao) => {
   botao.addEventListener("click", () => {
     const prato = botao.closest(".prato");
     const nome = prato.querySelector("h3").textContent;
     const preco = Number(prato.querySelector(".preco").textContent.replace(/[^\d,]/g, "").replace(",", "."));
 
-    const itens = lerCarrinho();
-    const item = itens.find((i) => i.nome === nome);
-
-    if (item) {
-      item.quantidade++;
-    } else {
-      itens.push({ nome, preco, quantidade: 1 });
-    }
-
-    salvarCarrinho(itens);
-    mostrarAviso(nome + " foi adicionado ao seu carrinho.");
+    adicionarAoCarrinho(nome, preco, 1);
   });
 });
 
@@ -637,4 +641,241 @@ if (abasLogin.length > 0) {
     salvar("usuarioLogado", email);
     window.location.href = "index.html";
   });
+}
+
+const produtos = [
+  {
+    id: 1,
+    nome: "Tacos",
+    categoria: "Tacos",
+    preco: 32.90,
+    descricao: "Três tacos de milho com carne temperada, pico de gallo e limão.",
+    detalhes: "Tortillas de milho feitas na hora, recheadas com carne bovina temperada com especiarias mexicanas e finalizadas com pico de gallo fresco. Vem com limão para espremer por cima.",
+    ingredientes: ["Tortilla de milho", "Carne bovina temperada", "Pico de gallo", "Coentro", "Limão"],
+    pimenta: 2,
+    alcool: false,
+  },
+  {
+    id: 2,
+    nome: "Burrito Azteca",
+    categoria: "Burritos",
+    preco: 39.90,
+    descricao: "Burrito grande com carne, feijão, arroz e molho picante da casa.",
+    detalhes: "Um burrito bem recheado, enrolado em tortilha de trigo macia, com carne, feijão, arroz mexicano e queijo derretido. Servido com o molho picante da casa.",
+    ingredientes: ["Tortilha de trigo", "Carne bovina", "Feijão", "Arroz mexicano", "Queijo", "Molho picante da casa"],
+    pimenta: 3,
+    alcool: false,
+  },
+  {
+    id: 3,
+    nome: "Guacamole Sagrado",
+    categoria: "Entradas",
+    preco: 24.90,
+    descricao: "Guacamole fresco preparado na hora, servido com tortilla chips.",
+    detalhes: "Feito na hora com abacate maduro, tomate, cebola roxa e coentro. Perfeito para dividir no começo da refeição, acompanhado de tortilla chips crocantes.",
+    ingredientes: ["Abacate", "Tomate", "Cebola roxa", "Coentro", "Limão", "Tortilla chips"],
+    pimenta: 0,
+    alcool: false,
+  },
+  {
+    id: 4,
+    nome: "Quesadilla Mexicana",
+    categoria: "Quesadillas",
+    preco: 29.90,
+    descricao: "Tortilha grelhada com queijo derretido, pimentão e frango desfiado.",
+    detalhes: "Tortilha de trigo grelhada até ficar dourada, recheada com bastante queijo derretido, frango desfiado, pimentão e cebola.",
+    ingredientes: ["Tortilha de trigo", "Queijo", "Frango desfiado", "Pimentão", "Cebola"],
+    pimenta: 1,
+    alcool: false,
+  },
+  {
+    id: 5,
+    nome: "Nachos Fiesta",
+    categoria: "Entradas",
+    preco: 34.90,
+    descricao: "Nachos crocantes com queijo, feijão, jalapeño e creme azedo.",
+    detalhes: "Uma travessa de nachos crocantes cobertos com queijo derretido, feijão, tomate e jalapeño. Servido com creme azedo para equilibrar a pimenta.",
+    ingredientes: ["Nachos de milho", "Queijo derretido", "Feijão", "Tomate", "Jalapeño", "Creme azedo"],
+    pimenta: 2,
+    alcool: false,
+  },
+  {
+    id: 6,
+    nome: "Margarita Clássica",
+    categoria: "Bebidas",
+    preco: 19.90,
+    descricao: "Drink de tequila, limão fresco e sal na borda do copo.",
+    detalhes: "O clássico mexicano: tequila, suco de limão fresco e licor de laranja, servido bem gelado com sal na borda do copo.",
+    ingredientes: ["Tequila", "Suco de limão", "Licor de laranja", "Gelo", "Sal na borda"],
+    pimenta: 0,
+    alcool: true,
+  },
+  {
+    id: 7,
+    nome: "Taco Vegano",
+    categoria: "Tacos",
+    preco: 29.90,
+    descricao: "Tacos de jaca desfiada, guacamole, cebola roxa e salsa fresca.",
+    detalhes: "Uma versão 100% vegetal: jaca desfiada e temperada, no lugar da carne, em tortillas de milho, com guacamole, cebola roxa e salsa fresca.",
+    ingredientes: ["Tortilla de milho", "Jaca desfiada", "Guacamole", "Cebola roxa", "Salsa fresca"],
+    pimenta: 1,
+    alcool: false,
+  },
+  {
+    id: 8,
+    nome: "Churros Mexicanos",
+    categoria: "Sobremesas",
+    preco: 18.90,
+    descricao: "Churros crocantes com açúcar, canela e doce de leite caseiro.",
+    detalhes: "Churros fritos na hora, crocantes por fora e macios por dentro, passados no açúcar com canela e servidos com doce de leite caseiro.",
+    ingredientes: ["Massa de churros", "Açúcar", "Canela", "Doce de leite caseiro"],
+    pimenta: 0,
+    alcool: false,
+  },
+  {
+    id: 9,
+    nome: "Burrito Vegano",
+    categoria: "Burritos",
+    preco: 34.90,
+    descricao: "Burrito de feijão preto, arroz, milho, legumes e guacamole.",
+    detalhes: "Burrito recheado com feijão preto, arroz, milho e legumes salteados, finalizado com guacamole. Sem nenhum ingrediente de origem animal.",
+    ingredientes: ["Tortilha de trigo", "Feijão preto", "Arroz", "Milho", "Legumes", "Guacamole"],
+    pimenta: 1,
+    alcool: false,
+  },
+  {
+    id: 10,
+    nome: "Paloma Mexicana",
+    categoria: "Bebidas",
+    preco: 21.90,
+    descricao: "Drink refrescante de tequila, grapefruit e limão.",
+    detalhes: "Drink leve e refrescante, feito com tequila, suco de grapefruit, limão e água com gás, servido com bastante gelo.",
+    ingredientes: ["Tequila", "Suco de grapefruit", "Limão", "Água com gás", "Gelo"],
+    pimenta: 0,
+    alcool: true,
+  },
+  {
+    id: 11,
+    nome: "Taco Pastor",
+    categoria: "Tacos",
+    preco: 34.90,
+    descricao: "Tacos de carne marinada com abacaxi, coentro e cebola.",
+    detalhes: "Carne marinada em temperos mexicanos e grelhada, servida em tortillas de milho com pedaços de abacaxi, coentro e cebola.",
+    ingredientes: ["Tortilla de milho", "Carne marinada", "Abacaxi", "Coentro", "Cebola", "Limão"],
+    pimenta: 2,
+    alcool: false,
+  },
+  {
+    id: 12,
+    nome: "Tres Leches",
+    categoria: "Sobremesas",
+    preco: 17.90,
+    descricao: "Bolo molhado em três leites, com chantilly e canela.",
+    detalhes: "Bolo macio molhado em uma mistura de três tipos de leite, coberto com chantilly e um toque de canela. Servido gelado.",
+    ingredientes: ["Bolo", "Leite integral", "Leite condensado", "Creme de leite", "Chantilly", "Canela"],
+    pimenta: 0,
+    alcool: false,
+  },
+];
+
+const niveisPimenta = ["Sem pimenta", "Suave", "Médio", "Forte"];
+
+function formatarPreco(valor) {
+  return "R$ " + valor.toFixed(2).replace(".", ",");
+}
+
+const paginaProduto = document.querySelector(".produto-pagina");
+
+if (paginaProduto) {
+  const idProduto = Number(new URLSearchParams(window.location.search).get("id"));
+  const produto = produtos.find((p) => p.id === idProduto);
+
+  if (!produto) {
+    paginaProduto.querySelector(".produto-grade").hidden = true;
+    paginaProduto.querySelector(".produto-relacionados").hidden = true;
+    paginaProduto.querySelector(".produto-nao-encontrado").hidden = false;
+  } else {
+    document.title = produto.nome + " | El Sabor Sagrado";
+    paginaProduto.querySelector(".produto-caminho-nome").textContent = produto.nome;
+    paginaProduto.querySelector(".produto-categoria").textContent = produto.categoria.toUpperCase();
+    paginaProduto.querySelector(".produto-nome").textContent = produto.nome;
+    paginaProduto.querySelector(".produto-preco").textContent = formatarPreco(produto.preco);
+    paginaProduto.querySelector(".produto-descricao").textContent = produto.detalhes;
+    paginaProduto.querySelector(".produto-aviso").hidden = !produto.alcool;
+
+    const imagem = paginaProduto.querySelector(".produto-imagem img");
+    imagem.src = "cardapio" + produto.id + ".webp";
+    imagem.alt = produto.nome;
+
+    const listaIngredientes = paginaProduto.querySelector(".produto-ingredientes");
+    produto.ingredientes.forEach((ingrediente) => {
+      const li = document.createElement("li");
+      li.textContent = ingrediente;
+      listaIngredientes.appendChild(li);
+    });
+
+    const barras = paginaProduto.querySelector(".pimenta-barras");
+    const nomePimenta = paginaProduto.querySelector(".produto-pimenta-nome");
+    let nivelPimenta = produto.pimenta;
+
+    for (let i = 1; i <= 3; i++) {
+      barras.appendChild(document.createElement("i"));
+    }
+
+    function atualizarPimenta() {
+      barras.querySelectorAll("i").forEach((barra, indice) => {
+        barra.classList.toggle("apagada", indice + 1 > nivelPimenta);
+      });
+      nomePimenta.textContent = niveisPimenta[nivelPimenta];
+    }
+
+    paginaProduto.querySelector(".pimenta-menos").addEventListener("click", () => {
+      if (nivelPimenta > 0) nivelPimenta--;
+      atualizarPimenta();
+    });
+
+    paginaProduto.querySelector(".pimenta-mais").addEventListener("click", () => {
+      if (nivelPimenta < 3) nivelPimenta++;
+      atualizarPimenta();
+    });
+
+    atualizarPimenta();
+
+    let quantidade = 1;
+    const valorQuantidade = paginaProduto.querySelector(".produto-quantidade-valor");
+    const botaoAdicionarProduto = paginaProduto.querySelector(".produto-adicionar");
+
+    function atualizarQuantidade() {
+      valorQuantidade.textContent = quantidade;
+      botaoAdicionarProduto.textContent = "Adicionar ao carrinho · " + formatarPreco(produto.preco * quantidade);
+    }
+
+    paginaProduto.querySelector(".produto-menos").addEventListener("click", () => {
+      if (quantidade > 1) quantidade--;
+      atualizarQuantidade();
+    });
+
+    paginaProduto.querySelector(".produto-mais").addEventListener("click", () => {
+      if (quantidade < 20) quantidade++;
+      atualizarQuantidade();
+    });
+
+    botaoAdicionarProduto.addEventListener("click", () => {
+      adicionarAoCarrinho(produto.nome, produto.preco, quantidade);
+    });
+
+    atualizarQuantidade();
+
+    const mesmaCategoria = produtos.filter((p) => p.id !== produto.id && p.categoria === produto.categoria);
+    const outros = produtos.filter((p) => p.id !== produto.id && p.categoria !== produto.categoria);
+    const grade = paginaProduto.querySelector(".relacionados-grade");
+
+    mesmaCategoria.concat(outros).slice(0, 3).forEach((outro) => {
+      const link = document.createElement("a");
+      link.href = "produto.html?id=" + outro.id;
+      link.className = "relacionado";
+      link.innerHTML = '<img src="cardapio' + outro.id + '.webp" alt="' + outro.nome + '"><div><h3>' + outro.nome + "</h3><strong>" + formatarPreco(outro.preco) + "</strong></div>";
+      grade.appendChild(link);
+    });
+  }
 }

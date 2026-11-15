@@ -838,7 +838,9 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
 }
 
 .botao-detalhes {
+  display: inline-block;
   padding: 9px 16px;
+  text-decoration: none;
   font: inherit;
   font-size: 12px;
   font-weight: 600;
@@ -2030,4 +2032,255 @@ body:has(#interruptor-tema:checked) .reserva-formulario input {
 
 @media (max-width: 480px) {
   .login-cartao { padding: 26px 18px 30px; }
+}
+
+.produto-pagina {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 50px 60px 100px;
+}
+
+.produto-caminho {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  font-size: 14px;
+  color: var(--cinza);
+}
+
+.produto-caminho a { color: var(--cinza); text-decoration: none; }
+.produto-caminho a:hover { color: var(--laranja); }
+
+.produto-grade {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 60px;
+  align-items: start;
+}
+
+.produto-imagem {
+  align-self: center;
+  overflow: hidden;
+  background: var(--fundo-foto);
+  border-radius: 22px;
+  box-shadow: 0 18px 40px var(--sombra);
+}
+
+.produto-imagem img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.produto-categoria { margin-bottom: 12px; }
+
+.produto-nome {
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 48px;
+  line-height: 1.1;
+  color: var(--texto);
+}
+
+.produto-preco {
+  display: block;
+  margin: 18px 0 22px;
+  font-size: 30px;
+  color: var(--laranja);
+}
+
+.produto-descricao {
+  margin-bottom: 32px;
+  font-size: 17px;
+  line-height: 1.7;
+  color: var(--cinza);
+}
+
+.produto-info h2 {
+  margin-bottom: 14px;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 22px;
+  color: var(--texto);
+}
+
+.produto-ingredientes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 30px;
+  list-style: none;
+}
+
+.produto-ingredientes li {
+  padding: 8px 16px;
+  font-size: 14px;
+  color: var(--texto);
+  background: var(--fundo-suave);
+  border: 1px solid var(--borda);
+  border-radius: 999px;
+}
+
+.produto-pimenta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-bottom: 20px;
+  font-size: 15px;
+  color: var(--cinza);
+}
+
+.produto-pimenta .pimenta-barras { margin-top: 0; gap: 6px; }
+.produto-pimenta .pimenta-barras i { width: 36px; }
+.pimenta-barras i.apagada { opacity: 0.25; }
+
+.produto-pimenta button {
+  width: 30px;
+  height: 30px;
+  font: inherit;
+  font-size: 18px;
+  line-height: 1;
+  color: var(--texto);
+  background: var(--fundo-suave);
+  border: 1px solid var(--borda-campo);
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.produto-pimenta button:hover { color: var(--laranja); }
+
+.produto-pimenta-nome {
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.produto-aviso {
+  margin-bottom: 20px;
+  font-size: 13px;
+  color: var(--cinza);
+}
+
+.produto-compra {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 30px;
+  padding-top: 30px;
+  border-top: 1px solid var(--borda);
+}
+
+.produto-quantidade {
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  background: var(--fundo-suave);
+  border: 1px solid var(--borda-campo);
+  border-radius: 12px;
+}
+
+.produto-quantidade button {
+  width: 46px;
+  height: 52px;
+  font: inherit;
+  font-size: 22px;
+  color: var(--texto);
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.produto-quantidade button:hover { color: var(--laranja); }
+
+.produto-quantidade-valor {
+  min-width: 30px;
+  text-align: center;
+  font-weight: 600;
+  color: var(--texto);
+}
+
+.produto-adicionar {
+  flex: 1;
+  font-family: inherit;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 20px;
+  font-size: 16px;
+  white-space: normal;
+  cursor: pointer;
+}
+
+.produto-nao-encontrado {
+  padding: 60px 0;
+  text-align: center;
+}
+
+.produto-nao-encontrado[hidden],
+.produto-relacionados[hidden],
+.produto-grade[hidden] { display: none; }
+
+.produto-nao-encontrado h1 {
+  margin-bottom: 12px;
+  font-family: "Playfair Display", serif;
+  color: var(--texto);
+}
+
+.produto-nao-encontrado p {
+  margin-bottom: 24px;
+  color: var(--cinza);
+}
+
+.produto-relacionados { margin-top: 90px; }
+
+.produto-relacionados h2 {
+  margin-bottom: 28px;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 30px;
+  color: var(--texto);
+}
+
+.relacionados-grade {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.relacionado {
+  display: block;
+  overflow: hidden;
+  text-decoration: none;
+  background: var(--fundo-suave);
+  border: 1px solid var(--borda);
+  border-radius: 18px;
+  transition: transform 0.25s;
+}
+
+.relacionado:hover { transform: translateY(-6px); }
+
+.relacionado img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  background: var(--fundo-foto);
+}
+
+.relacionado div { padding: 16px 20px 20px; }
+
+.relacionado h3 {
+  margin-bottom: 6px;
+  font-family: "Playfair Display", serif;
+  font-weight: 600;
+  font-size: 20px;
+  color: var(--texto);
+}
+
+.relacionado strong { color: var(--laranja); }
+
+@media (max-width: 900px) {
+  .produto-pagina { padding: 36px 20px 80px; }
+  .produto-grade { grid-template-columns: minmax(0, 1fr); gap: 32px; }
+  .produto-nome { font-size: 36px; }
+  .relacionados-grade { grid-template-columns: minmax(0, 1fr); }
 }

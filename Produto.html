@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Produto | El Sabor Sagrado</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <input type="checkbox" id="interruptor-tema" class="tema-checkbox">
+
+  <header class="barra-topo">
+    <a href="index.html" class="logo">
+      <span class="logo-titulo">EL SABOR</span>
+      <span class="logo-subtitulo">SAGRADO</span>
+    </a>
+
+    <nav class="menu-links">
+      <a href="index.html">Início</a>
+      <a href="index.html#sobre">Sobre Nós</a>
+      <a href="cardapio.html" class="ativo">Cardápio</a>
+      <a href="index.html#depoimentos">Depoimentos</a>
+      <a href="index.html#contato">Contato</a>
+      <a href="cardapio.html" class="menu-pedir">Pedir agora</a>
+    </nav>
+
+    <div class="acoes">
+      <label class="botao-icone botao-tema" for="interruptor-tema" aria-label="Modo claro ou escuro"><span class="tema-icone"></span></label>
+
+      <a href="cardapio.html" class="botao-icone" aria-label="Cardápio">🔍</a>
+
+      <a href="carrinho.html" class="botao-icone botao-carrinho" aria-label="Carrinho">
+        🛒
+        <span class="contador">0</span>
+      </a>
+
+      <a href="login.html" class="link-entrar">Entrar</a>
+      <a href="login.html#cadastro" class="link-entrar">Cadastro</a>
+      <a href="cardapio.html" class="botao-principal botao-pedir">Pedir agora</a>
+      <a href="login.html" class="botao-principal botao-entrar">Entrar</a>
+      <a href="login.html#cadastro" class="botao-principal botao-entrar">Cadastro</a>
+
+      <button class="botao-menu" aria-label="Menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+    <section class="produto-pagina">
+      <nav class="produto-caminho">
+        <a href="cardapio.html">Cardápio</a>
+        <span>/</span>
+        <span class="produto-caminho-nome"></span>
+      </nav>
+
+      <div class="produto-grade">
+        <div class="produto-imagem">
+          <img src="" alt="">
+        </div>
+
+        <div class="produto-info">
+          <span class="sobretitulo produto-categoria"></span>
+          <h1 class="produto-nome"></h1>
+          <strong class="produto-preco"></strong>
+          <p class="produto-descricao"></p>
+
+          <h2>Ingredientes</h2>
+          <ul class="produto-ingredientes"></ul>
+
+          <div class="produto-pimenta">
+            <span>Nível de pimenta</span>
+            <button type="button" class="pimenta-menos" aria-label="Diminuir pimenta">−</button>
+            <div class="pimenta-barras"></div>
+            <button type="button" class="pimenta-mais" aria-label="Aumentar pimenta">+</button>
+            <span class="produto-pimenta-nome"></span>
+          </div>
+
+          <p class="produto-aviso" hidden>Contém álcool. Venda proibida para menores de 18 anos.</p>
+
+          <div class="produto-compra">
+            <div class="produto-quantidade">
+              <button type="button" class="produto-menos" aria-label="Diminuir">−</button>
+              <span class="produto-quantidade-valor">1</span>
+              <button type="button" class="produto-mais" aria-label="Aumentar">+</button>
+            </div>
+            <button type="button" class="botao-principal produto-adicionar">Adicionar ao carrinho</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="produto-nao-encontrado" hidden>
+        <h1>Produto não encontrado</h1>
+        <p>Esse prato não existe no cardápio.</p>
+        <a href="cardapio.html" class="botao-principal">Ver cardápio</a>
+      </div>
+
+      <div class="produto-relacionados">
+        <h2>Você também pode gostar</h2>
+        <div class="relacionados-grade"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="rodape" id="rodape">
+    <div class="rodape-marca">
+      <span class="logo-titulo">EL SABOR</span>
+      <span class="logo-subtitulo">SAGRADO</span>
+      <p>A autêntica experiência Mex-Tex na sua mesa.</p>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>NAVEGAÇÃO</h4>
+      <a href="index.html">Início</a>
+      <a href="index.html#sobre">Sobre Nós</a>
+      <a href="cardapio.html">Cardápio</a>
+      <a href="index.html#depoimentos">Depoimentos</a>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>MINHA CONTA</h4>
+      <a href="login.html">Login</a>
+      <a href="login.html#cadastro">Criar conta</a>
+      <a href="#pedidos">Meus pedidos</a>
+      <a href="#perfil">Meu perfil</a>
+    </div>
+
+    <div class="rodape-coluna">
+      <h4>CONTATO</h4>
+      <span>Av. México, 123</span>
+      <span>+55 (00) 99999-9999</span>
+      <span>Ter - Dom: 11h às 23h</span>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
