@@ -5,16 +5,16 @@
   --texto: #ffffff;
   --cinza: #b8b8b8;
   --laranja: #a21a1a;
-  --laranja-escuro: #f06a33;
+  --laranja-escuro: #b82020;
   --borda: rgba(255, 255, 255, 0.08);
 
-  --cor-sobretitulo: #f0a060;
+  --cor-sobretitulo: #e04848;
   --sombra: rgba(0, 0, 0, 0.35);
   --sombra-forte: rgba(0, 0, 0, 0.45);
   --fundo-foto: #181818;
   --fundo-espaco: #e4e4e4;
-  --cor-detalhes: #d9a07e;
-  --fundo-pimenta: #1a1210;
+  --cor-detalhes: #e24b4b;
+  --fundo-pimenta: #1a1010;
   --fundo-rodape: #161616;
   --borda-campo: rgba(255, 255, 255, 0.14);
 }
@@ -25,17 +25,17 @@ body:has(#interruptor-tema:checked) {
   --fundo-suave: #ffffff;
   --texto: #1a1a1a;
   --cinza: #5a5a5a;
-  --laranja: #d94f1a;
-  --laranja-escuro: #c84313;
+  --laranja: #a21a1a;
+  --laranja-escuro: #851414;
   --borda: rgba(0, 0, 0, 0.1);
 
-  --cor-sobretitulo: #d94f1a;
+  --cor-sobretitulo: #a21a1a;
   --sombra: rgba(0, 0, 0, 0.12);
   --sombra-forte: rgba(0, 0, 0, 0.22);
   --fundo-foto: #e4e0db;
   --fundo-espaco: #dcd8d3;
-  --cor-detalhes: #b8431a;
-  --fundo-pimenta: #f3e6df;
+  --cor-detalhes: #a21a1a;
+  --fundo-pimenta: #f5e3e3;
   --fundo-rodape: #ece8e3;
   --borda-campo: rgba(0, 0, 0, 0.2);
 }
@@ -90,7 +90,7 @@ body {
 .logo-subtitulo {
   font-size: 12px;
   letter-spacing: 2px;
-  color: var(--laranja);
+  color: var(--cor-sobretitulo);
 }
 
 /* Links */
@@ -373,7 +373,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   color: var(--cinza);
 }
 
-.estrela { color: #f5c542; }
+.estrela { color: #e8c27a; }
 
 /* Lado visual */
 .destaque-visual {
@@ -536,7 +536,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   place-items: center;
   margin-bottom: 20px;
   font-size: 24px;
-  background: rgba(224, 90, 36, 0.16);
+  background: rgba(162, 26, 26, 0.16);
   border-radius: 12px;
 }
 
@@ -843,7 +843,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
   font-size: 12px;
   font-weight: 600;
   color: var(--cor-detalhes);
-  background: rgba(224, 90, 36, 0.18);
+  background: rgba(162, 26, 26, 0.18);
   border: none;
   border-radius: 8px;
   cursor: pointer;
@@ -851,7 +851,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
 }
 
 .botao-detalhes:hover {
-  background: rgba(224, 90, 36, 0.32);
+  background: rgba(162, 26, 26, 0.32);
 }
 
 .botao-adicionar {
@@ -1019,7 +1019,7 @@ body:has(#interruptor-tema:checked) .tema-icone::before { content: "☀️"; }
 .estrelas {
   font-size: 20px;
   letter-spacing: 3px;
-  color: #f5c542;
+  color: #e8c27a;
 }
 
 .avaliacao p {
